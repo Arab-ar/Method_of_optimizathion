@@ -34,8 +34,8 @@ Task_XX/
 ├── Project/       <-- Готовый PDF-отчёт
 ├── Codes/         <-- Исходники LaTeX и Maple (.tex, .mpl, .mw)
 └── images/        <-- Файлы анимаций (.gif)
-```
 
+```
 bogdan@optimization:~$ whoami
 Трищилов Богдан
 
@@ -55,6 +55,9 @@ bogdan@optimization:~$ cat name.txt
 ██████╔╝╚██████╔╝╚██████╔╝██████╔╝██║  ██║██║ ╚████║
 ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝
 
+bogdan@optimization:~$ echo "Сделано с любовью к Maple и LaTeX"
+Сделано с любовью к Maple и LaTeX
+bogdan@optimization:~$ _
 bogdan@optimization:~$ echo "Сделано с любовью к Maple и LaTeX"
 Сделано с любовью к Maple и LaTeX
 bogdan@optimization:~$ _

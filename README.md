@@ -26,7 +26,7 @@
 ## 📂 Как всё устроено
 
 ```text
-Task_XX/
+Задача_XX/
 ├── README.md           <-- Описание задачи и ссылки
 ├── Project/            <-- Готовый PDF-отчёт и Jupyter Notebook (.pdf, .ipynb)
 ├── Codes/              <-- Исходники LaTeX и Maple (.tex, .mpl, .mw)

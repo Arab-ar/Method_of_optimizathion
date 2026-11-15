@@ -35,6 +35,11 @@ Task_XX/
 ├── Codes/         <-- Исходники LaTeX и Maple (.tex, .mpl, .mw)
 └── images/        <-- Файлы анимаций (.gif)
 
+---
+
+## 👨‍💻 Автор
+
+```bash
 bogdan@optimization:~$ whoami
 Трищилов Богдан
 

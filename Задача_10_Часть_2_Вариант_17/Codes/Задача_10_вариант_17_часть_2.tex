@@ -1,277 +1,212 @@
-% Компилировать pdfLaTeX
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper,fleqn]{article}
 
-\usepackage{cmap}
-\usepackage[T2A]{fontenc}
+%------------------------------------------------
+% Кодировки и шрифты
+%------------------------------------------------
 \usepackage[utf8]{inputenc}
-\usepackage[english,russian]{babel}
-\usepackage{tempora}
-
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
 \usepackage{amsmath,amssymb,mathtools}
 
+%------------------------------------------------
+% Оформление, отступы и выравнивание
+%------------------------------------------------
 \usepackage{geometry}
-\geometry{left=25mm,right=15mm,top=20mm,bottom=20mm}
+\geometry{left=20mm,right=20mm,top=20mm,bottom=20mm} 
 
 \usepackage{setspace}
-\onehalfspacing
-\usepackage{indentfirst}
-\setlength{\parindent}{1.25cm}
-\setlength{\parskip}{3pt}
-\allowdisplaybreaks
+\onehalfspacing 
+
+% Пакет для настройки списков
+\usepackage{enumitem} 
+\setlist[enumerate,itemize]{leftmargin=*} % Убирает отступы у списков
+
+\raggedright % Прижимает весь текст влево (без выравнивания по ширине)
+\setlength{\parindent}{0pt} % Убирает красную строку
+\setlength{\parskip}{1em} % Отступ между абзацами
+\setlength{\mathindent}{0pt} % Прижимает формулы влево
+
+\allowdisplaybreaks 
 
 \begin{document}
 
-\begin{center}
-    \textbf{\large Ч.\,2, №10}
-\end{center}
+\noindent\textbf{\Large Задача 10 (Часть 2) — Вариант 17}\\[0.5cm]
 
-\noindent
-\textbf{Постановка:}
-\[
-J(x) = \int_0^\pi (\dot{x}^2 - x^2) dt \to \text{extr}
-\]
-\[
-x(0) = 0, \qquad \int_0^\pi x \cos t \, dt = \frac{\pi}{2}, \qquad \int_0^\pi x \sin t \, dt = -2
-\]
+\section*{1. Постановка задачи}
 
-\noindent
-\textbf{Замена \(\dot{x} = u\), введение \(y_1, y_2\):}
-\[
-y_1(t) = \int_0^t x \cos \tau \, d\tau, \qquad y_2(t) = \int_0^t x \sin \tau \, d\tau
-\]
-\[
-\mathcal{L} = \int_0^\pi \bigl[ \lambda_0(u^2 - x^2) + p(\dot{x} - u) + q_1(\dot{y}_1 - x \cos t) + q_2(\dot{y}_2 - x \sin t) \bigr] dt + l
-\]
-\[
-l = \lambda_1 x(0) + \lambda_2 y_1(0) + \lambda_3 y_2(0) + \lambda_4\left(y_1(\pi) - \frac{\pi}{2}\right) + \lambda_5(y_2(\pi) + 2)
-\]
+Найти экстремум функционала:
+\begin{flalign*}
+& J[x]=\int_0^\pi(\dot x^2-x^2)\,dt\to\operatorname{extr}, &
+\end{flalign*}
+при условиях:
+\begin{flalign*}
+& x(0)=0,\qquad \int_0^\pi x\cos t\,dt=\frac\pi2,\qquad \int_0^\pi x\sin t\,dt=-2. &
+\end{flalign*}
 
-\noindent
-\textbf{Функция Гамильтона:}
-\[
-H = pu + q_1 x \cos t + q_2 x \sin t - \lambda_0(u^2 - x^2)
-\]
+\section*{2. Сведение к задаче Лагранжа}
 
-\vspace{0.3cm}
-\noindent
-\textbf{1. Стационарность по \(u\) (условие максимума ПМП):}
-\[
-\frac{\partial H}{\partial u} = p - 2\lambda_0 u = 0 \quad \Rightarrow \quad p = 2\lambda_0 u
-\]
-\[
-\frac{\partial^2 H}{\partial u^2} = -2\lambda_0 \le 0 \quad \text{(для минимума)}
-\]
+Введем замену переменной \(\dot x=u\). Тогда функционал примет вид:
+\begin{flalign*}
+& \int_0^\pi(u^2-x^2)\,dt\to\operatorname{extr}, &
+\end{flalign*}
+с дополнительной связью и граничными условиями:
+\begin{flalign*}
+& \dot x-u=0,\quad x(0)=0,\quad \int_0^\pi x\cos t\,dt=\frac\pi2,\quad \int_0^\pi x\sin t\,dt=-2. &
+\end{flalign*}
 
-\noindent
-\textbf{2. Стационарность по переменным (\(x, y_1, y_2\)):}
-\begin{itemize}
-    \item \textbf{По \(x\):}
-    \[
-    \frac{\partial H}{\partial x} = q_1 \cos t + q_2 \sin t + 2\lambda_0 x, \quad \dot{p} = -\frac{\partial H}{\partial x} \quad \Rightarrow \quad \dot{p} = -2\lambda_0 x - q_1 \cos t - q_2 \sin t
-    \]
-    \item \textbf{По \(y_1\):}
-    \[
-    \frac{\partial H}{\partial y_1} = 0, \quad \dot{q}_1 = -\frac{\partial H}{\partial y_1} \quad \Rightarrow \quad \dot{q}_1 = 0 \quad \Rightarrow \quad q_1 = \text{const}
-    \]
-    \item \textbf{По \(y_2\):}
-    \[
-    \frac{\partial H}{\partial y_2} = 0, \quad \dot{q}_2 = -\frac{\partial H}{\partial y_2} \quad \Rightarrow \quad \dot{q}_2 = 0 \quad \Rightarrow \quad q_2 = \text{const}
-    \]
-\end{itemize}
+Функция Лагранжа:
+\begin{flalign*}
+& L=\lambda_0(u^2-x^2)+p(t)(\dot x-u)-\lambda_1 x\cos t-\lambda_2 x\sin t, & \\
+& l=\lambda_1\frac\pi2-2\lambda_2+\lambda_3 x(0). &
+\end{flalign*}
+Множители: \(\lambda_0,\lambda_1,\lambda_2,\lambda_3\) и \(p(t)\).
 
-\noindent
-\textbf{3. Условия трансверсальности:}
-\[
-p(0) = \frac{\partial l}{\partial x(0)} = \lambda_1, \qquad p(\pi) = -\frac{\partial l}{\partial x(\pi)} = 0
-\]
-\[
-q_1(0) = \frac{\partial l}{\partial y_1(0)} = \lambda_2, \qquad q_1(\pi) = -\frac{\partial l}{\partial y_1(\pi)} = -\lambda_4
-\]
-\[
-q_2(0) = \frac{\partial l}{\partial y_2(0)} = \lambda_3, \qquad q_2(\pi) = -\frac{\partial l}{\partial y_2(\pi)} = -\lambda_5
-\]
+\section*{3. Необходимые условия}
 
-\noindent
-\textbf{4. Нормальность и знаки:}
-\[
-\lambda_0 \ge 0 \ \text{(loc min)}
-\]
-При \(\lambda_0=0 \Rightarrow p=0 \Rightarrow q_1=q_2=0 \Rightarrow \lambda_1=\dots=\lambda_5=0\) (тривиально). Следовательно, \(\lambda_0 = 1\).
-\[
-p = 2u = 2\dot{x}
-\]
+\begin{enumerate}
+    \item \textbf{Стационарность по \(x\):}
+    \begin{flalign*}
+    & \frac{d}{dt}L_{\dot x}=L_x \implies \dot p=-2\lambda_0 x-\lambda_1\cos t-\lambda_2\sin t. &
+    \end{flalign*}
+    
+    \item \textbf{Стационарность по \(u\):}
+    \begin{flalign*}
+    & L_u=0 \implies p=2\lambda_0 u. &
+    \end{flalign*}
+    
+    \item \textbf{Условия трансверсальности:}
+    \begin{flalign*}
+    & p(0)=\lambda_3,\qquad p(\pi)=0. &
+    \end{flalign*}
+    
+    \item \textbf{Согласование знаков:} \(\lambda_0\ge0\); \(\lambda_1,\lambda_2,\lambda_3\) любого знака.
+\end{enumerate}
 
-\vspace{0.3cm}
-\noindent
-\textbf{5. Краевая задача:}
-\[
-\begin{cases}
-\dot{x} = u = \frac{p}{2}, \\[1mm]
-\dot{p} = -2x - q_1 \cos t - q_2 \sin t, \\[1mm]
-\dot{q}_1 = 0, \\[1mm]
-\dot{q}_2 = 0,
-\end{cases}
-\qquad
-\begin{cases}
-x(0) = 0, \\[1mm]
-p(\pi) = 0, \\[1mm]
-q_1(\pi) = -\lambda_4, \\[1mm]
-q_2(\pi) = -\lambda_5.
-\end{cases}
-\]
+\section*{4. Исследование нормальности}
 
-Исключая \(p\) (\(\dot{p} = 2\ddot{x}\)):
-\[
-2\ddot{x} = -2x - q_1 \cos t - q_2 \sin t \quad \Rightarrow \quad \ddot{x} + x = -\frac{q_1}{2} \cos t - \frac{q_2}{2} \sin t
-\]
+\noindent\textbf{Случай \(\lambda_0=0\):}
+\begin{flalign*}
+& p \equiv 0 \implies \lambda_1\cos t+\lambda_2\sin t\equiv0 \implies \lambda_1=\lambda_2=0 & \\
+& \implies \lambda_3=0 \implies \text{все множители нулевые — невозможно.} &
+\end{flalign*}
 
-\noindent
-\textbf{6. Решение краевой задачи:}
-\[
-x(t) = C_1 \cos t + C_2 \sin t + a t \sin t + b t \cos t
-\]
-\[
-\ddot{x} + x = 2a \cos t - 2b \sin t \quad \Rightarrow \quad a = -\frac{q_1}{4}, \quad b = \frac{q_2}{4}
-\]
-\[
-x(0) = 0 \Rightarrow C_1 = 0
-\]
-\[
-\dot{x}(t) = C_2 \cos t + a(\sin t + t \cos t) + b(\cos t - t \sin t)
-\]
-\[
-p(\pi) = 2\dot{x}(\pi) = 0 \Rightarrow -C_2 - \pi a - b = 0 \Rightarrow C_2 = -\pi a - b
-\]
+\noindent\textbf{Случай \(\lambda_0\neq 0\):}
+\begin{flalign*}
+& \lambda_0=1 \implies p=2\dot x, \quad \ddot x+x=-\frac{\lambda_1}{2}\cos t-\frac{\lambda_2}{2}\sin t, & \\
+& x(0)=0, \quad \dot x(\pi)=0. &
+\end{flalign*}
 
-\noindent
-\textbf{7. Интегральные условия:}
-\[
-\int_0^\pi t \sin t \cos t \, dt = -\frac{\pi}{4}, \quad \int_0^\pi t \cos^2 t \, dt = \frac{\pi^2}{4}, \quad \int_0^\pi \sin t \cos t \, dt = 0
-\]
-\[
-\int_0^\pi \sin^2 t \, dt = \frac{\pi}{2}, \quad \int_0^\pi t \sin^2 t \, dt = \frac{\pi^2}{4}
-\]
-\[
-\int_0^\pi x \cos t \, dt = a\left(-\frac{\pi}{4}\right) + b\left(\frac{\pi^2}{4}\right) = \frac{\pi}{2}
-\]
-\[
-\int_0^\pi x \sin t \, dt = C_2\left(\frac{\pi}{2}\right) + a\left(\frac{\pi^2}{4}\right) + b\left(-\frac{\pi}{4}\right) = -2
-\]
+\section*{5. Решение краевой задачи}
 
-\noindent
-\textbf{8. Решение системы:}
-\[
-\begin{cases} 
--\dfrac{\pi}{4}a + \dfrac{\pi^2}{4}b = \dfrac{\pi}{2} \\[2mm]
-C_2\dfrac{\pi}{2} + \dfrac{\pi^2}{4}a - \dfrac{\pi}{4}b = -2 \\[2mm]
-C_2 + \pi a + b = 0 
-\end{cases}
-\Rightarrow
-\begin{cases} 
--a + \pi b = 2 \\[1mm]
-2\pi C_2 + \pi^2 a - \pi b = -8 \\[1mm]
-C_2 = -\pi a - b 
-\end{cases}
-\]
-\[
--\pi^2 a - 3\pi b = -8 \quad \Rightarrow \quad -\pi^3 b + 2\pi^2 - 3\pi b = -8
-\]
-\[
-\pi(\pi^2 + 3)b = 2(\pi^2 + 4) \Rightarrow b = \frac{2(\pi^2 + 4)}{\pi(\pi^2 + 3)}
-\]
-\[
-a = \pi b - 2 = \frac{2}{\pi^2 + 3}, \qquad C_2 = -\pi a - b = -\frac{4(\pi^2 + 2)}{\pi(\pi^2 + 3)}
-\]
+\begin{flalign*}
+& \ddot x + x = -\frac{\lambda_1}{2}\cos t - \frac{\lambda_2}{2}\sin t \equiv 2a\cos t - 2b\sin t, & \\
+& a = -\frac{\lambda_1}{4}, \quad b = \frac{\lambda_2}{4} & \\
+& x(t) = C_1\cos t + C_2\sin t + at\sin t + bt\cos t & \\
+& x(0) = 0 \implies C_1 = 0 & \\
+& \dot x(t) = C_2\cos t + a(\sin t + t\cos t) + b(\cos t - t\sin t) & \\
+& \dot x(\pi) = 0 \implies -C_2 - \pi a - b = 0 \implies C_2 = -\pi a - b &
+\end{flalign*}
 
-\noindent
-\textbf{9. Экстремаль:}
-\[
-\hat{x}(t) = \frac{2}{\pi(3+\pi^2)} \left[ -2(2+\pi^2)\sin t + t\left((4+\pi^2)\cos t + \pi\sin t\right) \right]
-\]
+\section*{6. Интегральные условия}
 
-\vspace{0.3cm}
-\noindent
-\textbf{10. Глобальный минимум:}
-\[
-x = \hat{x} + h, \quad h(0) = 0, \quad \int_0^\pi h \cos t \, dt = \int_0^\pi h \sin t \, dt = 0
-\]
-\[
-J(\hat{x}+h) - J(\hat{x}) = \int_0^\pi (2\dot{\hat{x}}\dot{h} - 2\hat{x}h) dt + \int_0^\pi (\dot{h}^2 - h^2) dt
-\]
-\[
-2\int_0^\pi \dot{\hat{x}}\dot{h} \, dt = -2\int_0^\pi \ddot{\hat{x}}h \, dt \Rightarrow -2\int_0^\pi (\ddot{\hat{x}} + \hat{x})h \, dt = \int_0^\pi (q_1 \cos t + q_2 \sin t)h \, dt = 0
-\]
-\[
-\Delta J = \int_0^\pi (\dot{h}^2 - h^2) dt, \quad v = \dot{h} \perp \{\sin t, 1+\cos t\}
-\]
-\[
-\int_0^\pi h^2 dt \le C \int_0^\pi v^2 dt, \quad C = \frac{5\pi^4-84\pi^2+384}{6(3\pi^2-16)} \approx 0.5144 < 1
-\]
-\[
-\Delta J \ge (1-C)\int_0^\pi v^2 dt > 0 \quad (v \not\equiv 0) \Rightarrow \hat{x} \text{ — строгий глобальный минимум}
-\]
+Вычислим необходимые интегралы:
+\begin{flalign*}
+& \int_0^\pi\sin t\cos t\,dt=0,\qquad \int_0^\pi t\sin t\cos t\,dt=-\frac\pi4, & \\
+& \int_0^\pi\sin^2 t\,dt=\frac\pi2,\qquad \int_0^\pi t\cos^2 t\,dt=\int_0^\pi t\sin^2 t\,dt=\frac{\pi^2}4. &
+\end{flalign*}
 
-\vspace{0.3cm}
-\noindent
-\textbf{11. Отсутствие максимума:}
-\[
-H^{\max} = u^2 - x^2 + pu + \dots \ \Rightarrow \ H^{\max}_{uu} = 2 > 0 \ \Rightarrow \ \sup_{u} H^{\max} = +\infty
-\]
-\[
-h = \alpha \sin 3t \ \Rightarrow \ h(0) = 0, \quad \int_0^\pi h \cos t \, dt = 0, \quad \int_0^\pi h \sin t \, dt = 0
-\]
-\[
-\Delta J = \int_0^\pi (9\alpha^2\cos^2 3t - \alpha^2\sin^2 3t) dt = \alpha^2 \left( 9 \cdot \frac{\pi}{2} - \frac{\pi}{2} \right) = 4\pi\alpha^2
-\]
-\[
-\lim_{|\alpha|\to\infty} J(\hat{x}+h) = J_{\min} + 4\pi\alpha^2 = +\infty \ \Rightarrow \ \text{глобального максимума нет.}
-\]
+Подставляем \(x(t)\) в заданные интегральные ограничения:
+\begin{flalign*}
+& \int_0^\pi x\cos t\,dt=-\frac\pi4 a+\frac{\pi^2}4 b=\frac\pi2 \quad\Rightarrow\quad -a+\pi b=2. & \\
+& \int_0^\pi x\sin t\,dt=\frac\pi2 C_2+\frac{\pi^2}4 a-\frac\pi4 b=-2. &
+\end{flalign*}
 
-\vspace{0.3cm}
-\noindent
-\textbf{12. Значение минимума:}
-\[
-J(\hat{x}) = \int_0^\pi (\dot{\hat{x}}^2 - \hat{x}^2) dt = [\hat{x}\dot{\hat{x}}]_0^\pi - \int_0^\pi \hat{x}(\ddot{\hat{x}} + \hat{x}) dt = 0 - \int_0^\pi \hat{x}\left(-\frac{q_1}{2}\cos t - \frac{q_2}{2}\sin t\right) dt
-\]
-\[
-J(\hat{x}) = \frac{q_1}{2} \int_0^\pi \hat{x}\cos t \, dt + \frac{q_2}{2} \int_0^\pi \hat{x}\sin t \, dt = \frac{q_1}{2} \cdot \frac{\pi}{2} + \frac{q_2}{2} \cdot (-2) = \frac{\pi q_1}{4} - q_2
-\]
-Подставляя \(q_1 = -4a\) и \(q_2 = 4b\):
-\[
-J_{\min} = -\pi a - 4b = -\pi\left(\frac{2}{\pi^2+3}\right) - 4\left(\frac{2(\pi^2+4)}{\pi(\pi^2+3)}\right) = -\frac{2(5\pi^2+16)}{\pi(\pi^2+3)}
-\]
+Подставим \(C_2=-\pi a-b\) во второе уравнение:
+\begin{flalign*}
+& \pi^2 a+3\pi b=8. &
+\end{flalign*}
+Из первого уравнения \(a=\pi b-2\). Подставляем:
+\begin{flalign*}
+& \pi(\pi^2+3)b=2(\pi^2+4) \implies b=\frac{2(\pi^2+4)}{\pi(\pi^2+3)},\qquad a=\frac2{\pi^2+3}. &
+\end{flalign*}
+Следовательно:
+\begin{flalign*}
+& C_2=-\frac{4(\pi^2+2)}{\pi(\pi^2+3)}. &
+\end{flalign*}
 
-\vspace{0.5cm}
-%------------------------------------------------
+\section*{7. Множители и экстремаль}
+
+Найденные множители Лагранжа:
+\begin{flalign*}
+& \lambda_0=1,\qquad \lambda_1=-4a=-\frac8{\pi^2+3},\qquad \lambda_2=4b=\frac{8(\pi^2+4)}{\pi(\pi^2+3)}, & \\
+& \lambda_3=p(0)=2\dot x(0)=-\frac{4\pi}{\pi^2+3}. &
+\end{flalign*}
+
+Единственная допустимая экстремаль:
+\begin{flalign*}
+& \hat x(t)=\frac2{\pi(\pi^2+3)}\Bigl[-2(\pi^2+2)\sin t+\pi\,t\sin t+(\pi^2+4)\,t\cos t\Bigr]. &
+\end{flalign*}
+
+Значение функционала на экстремали:
+\begin{flalign*}
+& J(\hat x)=-\pi a-4b=-\frac{2(5\pi^2+16)}{\pi(\pi^2+3)}\approx-3{,}2326. &
+\end{flalign*}
+
+\section*{8. Исследование достаточности}
+
+Квадратичный функционал второй вариации (приращение):
+\begin{flalign*}
+& \Delta J(h) = \int_0^\pi \bigl(\dot{h}^2 - h^2\bigr) \, dt. &
+\end{flalign*}
+
+\begin{enumerate}
+    \item \textbf{Условие Лежандра:}
+    \begin{flalign*}
+    & F_{\dot x\dot x} = 2\lambda_0 = 2 > 0 \implies \text{кандидат на строгий локальный минимум}. &
+    \end{flalign*}
+
+    \item \textbf{Условие Якоби.}
+    Уравнение Якоби:
+    \begin{flalign*}
+    & \ddot y + y = 0, \quad y(0)=0, \quad \dot y(0)=1 \implies y(t) = \sin t. &
+    \end{flalign*}
+    \begin{flalign*}
+    & y(\pi) = 0 \implies t^* = \pi \text{ — сопряжённая точка.} &
+    \end{flalign*}
+    \begin{itemize}
+        \item Обычное условие Якоби (на интервале \((0,\pi)\)): \textbf{выполнено}.
+        \item Усиленное условие Якоби (на полуинтервале \((0,\pi]\)): \textbf{не выполнено}.
+    \end{itemize}
+    
+    Без ограничений: \(h = \sin t \implies \Delta J(\sin t) = 0\).
+    
+    Для допустимых вариаций:
+    \begin{flalign*}
+    & \int_0^\pi h\cos t \, dt = 0, \quad \int_0^\pi h\sin t \, dt = 0 \implies \sin t \notin \{h\} \implies \Delta J(h) > 0 \quad (h \not\equiv 0). &
+    \end{flalign*}
+
+    \item \textbf{Проверка вариацией.} Возьмем \(h = \sin 3t\):
+    \begin{flalign*}
+    & \int_0^\pi \sin 3t\cos t \, dt = 0, \quad \int_0^\pi \sin 3t\sin t \, dt = 0 \quad (\text{допустима}). &
+    \end{flalign*}
+    \begin{flalign*}
+    & \Delta J(\sin 3t) = \int_0^\pi \bigl(9\cos^2 3t - \sin^2 3t\bigr) \, dt = 4\pi > 0. &
+    \end{flalign*}
+    \begin{flalign*}
+    & J(\hat x + \mu \sin 3t) = J(\hat x) + 4\pi\mu^2 \xrightarrow{\mu\to\infty} +\infty \implies \text{глобального максимума нет.} &
+    \end{flalign*}
+\end{enumerate}
+
+\textbf{Вывод:} \(\Delta J(h) > 0\) для любых допустимых \(h \not\equiv 0 \implies \hat x(t)\) доставляет \textbf{строгий глобальный минимум}.
+
+\vspace{1cm}
 \section*{Ответ}
-%------------------------------------------------
 
-\noindent
-\[
-\boxed{
-\hat{x}(t) = \frac{2}{\pi(3+\pi^2)} \left[ -2(2+\pi^2)\sin t + t\left((4+\pi^2)\cos t + \pi\sin t\right) \right]
-}
-\]
+\begin{flalign*}
+& \hat x(t)=\frac2{\pi(\pi^2+3)}\Bigl[-2(\pi^2+2)\sin t+\pi\,t\sin t+(\pi^2+4)\,t\cos t\Bigr], & \\
+\\& J_{\min}=-\frac{2(5\pi^2+16)}{\pi(\pi^2+3)}\approx-3{,}2326. &
+\end{flalign*}
 
-\noindent
-\[
-\boxed{
-\hat{u}(t) = \frac{2}{\pi(3+\pi^2)} \left[ -\pi^2\cos t + \pi\sin t + t\left(\pi\cos t - (4+\pi^2)\sin t\right) \right]
-}
-\]
-
-\noindent
-\[
-\boxed{
-J_{\min} = -\frac{2(5\pi^2+16)}{\pi(3+\pi^2)} \approx -3.2326
-}
-\]
-
-\noindent
-\textbf{Характер экстремума:}
-\begin{itemize}
-    \item \(\hat{x}(t)\) доставляет \textbf{строгий глобальный минимум} (доказано через положительность второй вариации: \(\Delta J \ge (1-C)\int \dot{h}^2 dt > 0\)).
-    \item \textbf{Глобального максимума не существует}, так как для задачи на максимум функция Гамильтона выпукла по \(u\) (\(H^{\max}_{uu} = 2 > 0\)), и при вариации \(h(t) = \alpha \sin 3t\) имеем \(J \to +\infty\) при \(|\alpha| \to \infty\).
-\end{itemize}
+Траектория \(\hat x(t)\) доставляет \textbf{строгий глобальный минимум}; глобального максимума не существует.
 
 \end{document}

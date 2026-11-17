@@ -10,7 +10,7 @@
 Алгоритм исследования:
 1. Вариация по Лагранжу: $\delta F(x, h) = \lim_{\lambda \to 0} \frac{F(x + \lambda h) - F(x)}{\lambda}$
 2. Линейность и ограниченность по $h \Rightarrow F'_{\Gamma}(x)h = \delta F(x, h)$
-$F'(x) = F'_{\Gamma}(x)$
+3. $F'(x) = F'_{\Gamma}(x)$
 
 ## 📄 Документы
 

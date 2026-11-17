@@ -9,8 +9,8 @@
 
 Алгоритм исследования:
 1. Вариация по Лагранжу: $\delta F(x, h) = \lim_{\lambda \to 0} \frac{F(x + \lambda h) - F(x)}{\lambda}$
-2. Линейность и ограниченность по $h \Rightarrow {F'}_{\Gamma}(x)h = \delta F(x, h)$
-3. $x \mapsto {F'}{\Gamma}(x)$ непрерывно (по операторной норме) $\Rightarrow F$ дифференцируемо по Фреше и $F'(x) = {F'}{\Gamma}(x)$
+2. Линейность и ограниченность по $h \Rightarrow F'_r(x)h = \delta F(x, h)$
+3. $x \mapsto F'_r(x)$ непрерывно (по операторной норме) $\Rightarrow F$ дифференцируемо по Фреше и $F'(x) = F'_r(x)$
 
 ## 📄 Документы
 

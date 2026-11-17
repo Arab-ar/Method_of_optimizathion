@@ -26,7 +26,7 @@
 ---
 
 > ▶ **Интерактивная версия ноутбука** (с работающими анимациями, ползунком и кнопками скорости):
-> **[Открыть в nbviewer](https://nbviewer.jupyter.org/github/ВАШ_ЛОГИН/ВАШ_РЕПОЗИТОРИЙ/blob/main/Задача_2_вариант_17_часть_2.ipynb)**
+> **[Открыть в nbviewer](https://nbviewer.jupyter.org/github/Arab-ar/Method_of_optimizathion/blob/main/Задача_2_вариант_17_часть_2.ipynb)**
 >
 > GitHub не выполняет JavaScript в `.ipynb`, поэтому интерактивные анимации в ноутбуке работают только через nbviewer, Jupyter или Colab. GIF-версии всех 8 анимаций — ниже в этом README.
 

@@ -1,0 +1,289 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\section*{Вариант 17, Задача 2}
+
+\subsection*{Пункт 1}
+
+\[
+F(x, y) = (xy, \ x^2 + y^2, \ |x|), \quad z = (x, y), \quad h = (h_1, h_2)
+\]
+
+\textbf{Шаг 1.} Приращение аргумента:
+\[
+z + \lambda h = (x + \lambda h_1, \ y + \lambda h_2)
+\]
+
+\textbf{Шаг 2.} Подстановка в $F$:
+\[
+F(z + \lambda h) = \Big( (x + \lambda h_1)(y + \lambda h_2), \ (x + \lambda h_1)^2 + (y + \lambda h_2)^2, \ |x + \lambda h_1| \Big)
+\]
+
+\textbf{Шаг 3.} Раскрытие скобок покомпонентно:
+\begin{align*}
+1\text{-я:} & \quad xy + \lambda(y h_1 + x h_2) + \lambda^2 h_1 h_2 \\
+2\text{-я:} & \quad x^2 + y^2 + \lambda(2x h_1 + 2y h_2) + \lambda^2(h_1^2 + h_2^2) \\
+3\text{-я:} & \quad |x + \lambda h_1|
+\end{align*}
+
+\textbf{Шаг 4.} Разность $F(z + \lambda h) - F(z)$:
+\[
+\Big( \lambda(y h_1 + x h_2) + \lambda^2 h_1 h_2, \ \lambda(2x h_1 + 2y h_2) + \lambda^2(h_1^2 + h_2^2), \ |x + \lambda h_1| - |x| \Big)
+\]
+
+\textbf{Шаг 5.} Деление на $\lambda$ (вычисление вариации по Лагранжу):
+\[
+\frac{F(z + \lambda h) - F(z)}{\lambda} = \left( y h_1 + x h_2 + \lambda h_1 h_2, \ 2x h_1 + 2y h_2 + \lambda(h_1^2 + h_2^2), \ \frac{|x + \lambda h_1| - |x|}{\lambda} \right)
+\]
+
+\textbf{Шаг 6.} Предел при $\lambda \to 0$.
+
+\vspace{0.2cm}
+\textbf{Случай $x \neq 0$ (например, $x_0 = 1$):}
+\[
+|x + \lambda h_1| = \text{sgn}(x) \cdot (x + \lambda h_1) \quad \text{при малых } \lambda
+\]
+\[
+\frac{|x + \lambda h_1| - |x|}{\lambda} = \frac{\text{sgn}(x) \cdot \lambda h_1}{\lambda} = \text{sgn}(x) \cdot h_1
+\]
+
+\textbf{Шаг 7.} Вариация Лагранжа:
+\[
+\delta F(z, h) = \big( y h_1 + x h_2, \ 2x h_1 + 2y h_2, \ \text{sgn}(x) \cdot h_1 \big)
+\]
+
+\textbf{Шаг 8.} Матричная запись:
+\[
+\delta F(z, h) = 
+\begin{pmatrix}
+y & x \\
+2x & 2y \\
+\text{sgn}(x) & 0
+\end{pmatrix}
+\begin{pmatrix}
+h_1 \\
+h_2
+\end{pmatrix}
+= F'_r(z) \cdot h
+\]
+\newpage
+
+\textbf{Шаг 9.} Проверка условия (2) — линейность и ограниченность по $h$:\\
+
+Пусть $h = (h_1, h_2)$, $g = (g_1, g_2)$, $\alpha \in \mathbb{R}$.\\
+
+\textit{Аддитивность:}
+\[
+\delta F(z, h + g) = 
+\begin{pmatrix}
+y & x \\
+2x & 2y \\
+\text{sgn}(x) & 0
+\end{pmatrix}
+\begin{pmatrix}
+h_1 + g_1 \\
+h_2 + g_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+y h_1 + x h_2 \\
+2x h_1 + 2y h_2 \\
+\text{sgn}(x) h_1
+\end{pmatrix}
++
+\begin{pmatrix}
+y g_1 + x g_2 \\
+2x g_1 + 2y g_2 \\
+\text{sgn}(x) g_1
+\end{pmatrix}
+= \delta F(z, h) + \delta F(z, g)
+\]
+
+\textit{Однородность:}
+\[
+\delta F(z, \alpha h) = 
+\begin{pmatrix}
+y & x \\
+2x & 2y \\
+\text{sgn}(x) & 0
+\end{pmatrix}
+\begin{pmatrix}
+\alpha h_1 \\
+\alpha h_2
+\end{pmatrix}
+= \alpha
+\begin{pmatrix}
+y h_1 + x h_2 \\
+2x h_1 + 2y h_2 \\
+\text{sgn}(x) h_1
+\end{pmatrix}
+= \alpha \delta F(z, h)
+\]
+
+=> $\delta F$ линейна по $h$.\\
+
+\textit{Ограниченность:} матрица $3 \times 2$ с конечными элементами при фиксированном $z$ задаёт ограниченный оператор из $\mathbb{R}^2$ в $\mathbb{R}^3$.
+=> $F'_r(z) h = \delta F(z, h)$.\\
+
+\textbf{Шаг 10.} Проверка условия (3) — непрерывность $F'_r(z)$ по $z$ при $x \neq 0$:
+\[
+\text{Элементы матрицы: } y, \ x, \ 2x, \ 2y, \ \text{sgn}(x), \ 0
+\]
+\[
+\text{Все функции непрерывны по } z \text{ при } x \neq 0 \ (\text{sgn}(x) = \text{const на } x > 0 \text{ и } x < 0)
+\]
+=> $F'_r(z)$ непрерывна по операторной норме
+=> $F$ дифференцируема по Фреше, $F'(z) = F'_r(z)$.\\
+
+\textbf{Ответ (случай $x \neq 0$):}
+\[
+\boxed{F'(z) = F'_r(z) = 
+\begin{pmatrix}
+y & x \\
+2x & 2y \\
+\text{sgn}(x) & 0
+\end{pmatrix}}
+\]
+
+\vspace{0.3cm}
+\textbf{Случай $x = 0$, точка $z_0 = (0, y_0)$, направление $h = (1, 0)$:}
+\[
+\frac{|0 + \lambda| - 0}{\lambda} = \frac{|\lambda|}{\lambda} = \text{sgn}(\lambda)
+\]
+\[
+\lim_{\lambda \to 0^+} \text{sgn}(\lambda) = 1, \quad \lim_{\lambda \to 0^-} \text{sgn}(\lambda) = -1
+\]
+\[
+\Rightarrow \text{предела в шаге 1 нет} \Rightarrow \text{нет } \delta F \Rightarrow \text{нет } F'_r \Rightarrow \text{нет } F'
+\]
+
+\textbf{Ответ (случай $x = 0$):}
+\[
+\boxed{F \text{ не дифференцируема по Фреше в точках } (0, y_0)}
+\]
+
+\newpage
+\subsection*{Пункт 2}
+
+\[
+(Fx)(t) = (\ddot{x}^2(t) - \cos x(t))^2, \quad F: C^2[0,1] \to C[0,1]
+\]
+\[
+\|h\|_{C^2} = \max|h| + \max|\dot{h}| + \max|\ddot{h}|, \quad \|f\|_C = \max|f(t)|
+\]
+
+\textbf{Шаг 1.} Обозначение:
+\[
+G(x) = \ddot{x}^2 - \cos x \Rightarrow F(x) = G^2(x)
+\]
+
+\textbf{Шаг 2.} Приращение внутренней функции:
+\[
+g_\lambda = G(x + \lambda h) = (\ddot{x} + \lambda \ddot{h})^2 - \cos(x + \lambda h)
+\]
+
+\textbf{Шаг 3.} Раскрытие:
+\[
+(\ddot{x} + \lambda \ddot{h})^2 = \ddot{x}^2 + 2\lambda \ddot{x} \ddot{h} + \lambda^2 \ddot{h}^2
+\]
+\[
+\cos(x + \lambda h) = \cos x \cos(\lambda h) - \sin x \sin(\lambda h)
+\]
+
+\textbf{Шаг 4.} Разность $g_\lambda - G$:
+\begin{align*}
+g_\lambda - G &= 2\lambda \ddot{x} \ddot{h} + \lambda^2 \ddot{h}^2 + \cos x - \cos(x + \lambda h) \\
+&= 2\lambda \ddot{x} \ddot{h} + \lambda^2 \ddot{h}^2 + \cos x (1 - \cos(\lambda h)) + \sin x \sin(\lambda h)
+\end{align*}
+
+\textbf{Шаг 5.} Вынесение $\lambda$:
+\[
+g_\lambda - G = \lambda \cdot \Psi_\lambda
+\]
+\[
+\Psi_\lambda = 2\ddot{x}\ddot{h} + \lambda \ddot{h}^2 + \cos x \cdot \frac{1 - \cos(\lambda h)}{\lambda} + \sin x \cdot \frac{\sin(\lambda h)}{\lambda}
+\]
+
+\textbf{Шаг 6.} Предел $\Psi_\lambda$ при $\lambda \to 0$:
+\begin{align*}
+& \frac{1 - \cos(\lambda h)}{\lambda} = \frac{1 - \cos(\lambda h)}{\lambda h} \cdot h \to 0 \cdot h = 0 \\
+& \frac{\sin(\lambda h)}{\lambda} = \frac{\sin(\lambda h)}{\lambda h} \cdot h \to 1 \cdot h = h \\
+& \Rightarrow \Psi = \lim_{\lambda \to 0} \Psi_\lambda = 2\ddot{x}\ddot{h} + h \sin x
+\end{align*}
+
+\textbf{Шаг 7.} Оценка скорости сходимости:
+\begin{align*}
+& |1 - \cos u| \le \frac{u^2}{2}, \quad |\sin u - u| \le \frac{|u|^3}{6} \\
+& \Rightarrow \|\Psi_\lambda - \Psi\|_C \le |\lambda| \left( \|\ddot{h}\|_C^2 + \frac{1}{2}\|h\|_C^2 + \frac{1}{6}\|h\|_C^3 \right) \to 0
+\end{align*}
+
+\textbf{Шаг 8.} Вариация $F = G^2$ (вычисление предела разностного отношения):
+\begin{align*}
+\frac{F(x + \lambda h) - F(x)}{\lambda} &= \frac{g_\lambda^2 - G^2}{\lambda} = \frac{(g_\lambda - G)(g_\lambda + G)}{\lambda} \\
+&= \Psi_\lambda \cdot (g_\lambda + G) = \Psi_\lambda \cdot (2G + \lambda \Psi_\lambda)
+\end{align*}
+
+\textbf{Шаг 9.} Переход к пределу:
+\[
+\lim_{\lambda \to 0} \Psi_\lambda \cdot (2G + \lambda \Psi_\lambda) = \Psi \cdot 2G = 2G \cdot \Psi
+\]
+
+\textbf{Шаг 10.} Подстановка:
+\[
+\delta F(x, h) = 2(\ddot{x}^2 - \cos x)(2\ddot{x}\ddot{h} + h \sin x)
+\]
+
+\textbf{Шаг 11.} Проверка условия (2) — линейность и ограниченность:
+\begin{align*}
+& \delta F \text{ линейна по } h \text{ (очевидно)} \\
+& \|\delta F(x, h)\|_C \le 2\|G\|_C \left( 2\|\ddot{x}\|_C \|\ddot{h}\|_C + \|h\|_C \right) \\
+& \|\ddot{h}\|_C \le \|h\|_{C^2}, \quad \|h\|_C \le \|h\|_{C^2} \\
+& \Rightarrow \|\delta F(x, h)\|_C \le 2\|G\|_C (2\|\ddot{x}\|_C + 1) \|h\|_{C^2} \\
+& \Rightarrow F'_r(x) \in \mathcal{L}(C^2, C) \\
+& \Rightarrow F'_r(x)h = \delta F(x, h)
+\end{align*}
+
+\textbf{Шаг 12.} Проверка условия (3) — непрерывность $F'_r$ по $x$. Пусть $\tilde{x} = x + k$, $\tilde{G} = G(\tilde{x})$:
+\begin{align*}
+F'_r(\tilde{x})h - F'_r(x)h &= 2(\tilde{G} - G)(2\ddot{\tilde{x}}\ddot{h} + h \sin \tilde{x}) + 2G(2\ddot{k}\ddot{h} + h(\sin \tilde{x} - \sin x))
+\end{align*}
+
+\textbf{Шаг 13.} Оценки разностей:
+\begin{align*}
+\tilde{G} - G &= 2\ddot{x}\ddot{k} + \ddot{k}^2 + \cos x - \cos(x + k) \\
+\|\tilde{G} - G\|_C &\le (2\|\ddot{x}\|_C + \|k\|_{C^2} + 1)\|k\|_{C^2} \\
+|\sin \tilde{x} - \sin x| &\le |k| \Rightarrow \|\sin \tilde{x} - \sin x\|_C \le \|k\|_{C^2} \\
+\|\ddot{\tilde{x}}\|_C &\le \|\ddot{x}\|_C + \|k\|_{C^2}
+\end{align*}
+
+\textbf{Шаг 14.} Итоговая оценка:
+\begin{align*}
+\|F'_r(x + k) - F'_r(x)\| &\le 2(2\|\ddot{x}\|_C + \|k\|_{C^2} + 1)\|k\|_{C^2}(2\|\ddot{x}\|_C + 2\|k\|_{C^2} + 1) \\
+&\quad + 6\|G\|_C \|k\|_{C^2} \xrightarrow{k \to 0} 0
+\end{align*}
+
+\[
+\Rightarrow F'_r \text{ непрерывна в каждой точке } x \in C^2[0,1]
+\]
+\[
+\Rightarrow F \text{ дифференцируема по Фреше}
+\]
+
+\textbf{Ответ:}
+\[
+\boxed{F'_r(x)h = 2(\ddot{x}^2 - \cos x)(2\ddot{x}\ddot{h} + h \sin x)}
+\]
+\[
+\boxed{F'(x)h = F'_r(x)h = 2(\ddot{x}^2 - \cos x)(2\ddot{x}\ddot{h} + h \sin x)}
+\]
+
+\end{document}

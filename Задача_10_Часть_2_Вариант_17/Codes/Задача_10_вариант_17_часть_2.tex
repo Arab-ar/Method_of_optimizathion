@@ -205,6 +205,44 @@
 
 \textbf{Вывод:} \(\Delta J(h) > 0\) для любых допустимых \(h \not\equiv 0 \implies \hat{x}(t)\) доставляет \textbf{строгий глобальный минимум}.
 
+\section*{9. Строгое доказательство через неравенство Виртингера}
+
+Для \(h \in C^1[0,\pi],\ h(0)=0\) справедливо неравенство Виртингера:
+\begin{flalign*}
+& \int_0^\pi h^2(t)\,dt \le \int_0^\pi \dot{h}^2(t)\,dt, &
+\end{flalign*}
+причем равенство достигается тогда и только тогда, когда:
+\begin{flalign*}
+& h(t) = C\sin t, \quad C = \text{const}. &
+\end{flalign*}
+
+Запишем вторую вариацию:
+\begin{flalign*}
+& \Delta J(h) = \int_0^\pi \dot{h}^2(t)\,dt - \int_0^\pi h^2(t)\,dt \ge 0. &
+\end{flalign*}
+
+Предположим, что достигается равенство \(\Delta J(h) = 0\):
+\begin{flalign*}
+& \Delta J(h) = 0 \implies h(t) = C\sin t. &
+\end{flalign*}
+
+Проверим выполнение интегрального ограничения \(\int_0^\pi h(t)\sin t\,dt = 0\) для такой вариации:
+\begin{flalign*}
+& \int_0^\pi (C\sin t)\sin t\,dt = C\int_0^\pi \sin^2 t\,dt = C\frac{\pi}{2}. &
+\end{flalign*}
+
+По условию \(C\frac{\pi}{2} = 0 \implies C = 0\). 
+
+Отсюда:
+\begin{flalign*}
+& C=0 \implies h(t) \equiv 0. &
+\end{flalign*}
+
+Таким образом, равенство \(\Delta J(h) = 0\) возможно только для нулевой вариации:
+\begin{flalign*}
+& h \not\equiv 0 \implies \Delta J(h) > 0. &
+\end{flalign*}
+
 \vspace{1cm}
 \section*{Ответ}
 

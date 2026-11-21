@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper,fleqn]{article}
+
+%------------------------------------------------
+% Кодировки и шрифты
+%------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb,mathtools}
+
+%------------------------------------------------
+% Оформление, отступы и выравнивание по левому краю
+%------------------------------------------------
+\usepackage{geometry}
+\geometry{left=20mm,right=20mm,top=20mm,bottom=20mm} 
+
+\usepackage{setspace}
+\onehalfspacing 
+
+\raggedright 
+\setlength{\parindent}{0pt} 
+\setlength{\parskip}{1em} 
+\setlength{\mathindent}{0pt} % Формулы прижаты влево
+
+\allowdisplaybreaks 
+
+\begin{document}
+
+\noindent\textbf{\Large Ответ:} Нет, не обязательно (при $\deg P \ge 5$).
+
+\vspace{0.5cm}
+\noindent\textbf{1. Случай $\deg P = 3$ (экстремумы всегда есть):}
+
+\begin{flalign*}
+& \deg P = 3 \implies \deg P' = 2 & \\[10pt]
+& P'(x_1) = P'(x_2) = 0 \ (x_1 \neq x_2) \implies x_1, x_2 \text{ --- простые корни } (\text{кратности } 1) & \\[10pt]
+& \implies P'(x) \text{ меняет знак при переходе через } x_1 \text{ и } x_2 \implies \text{обе точки являются экстремумами} &
+\end{flalign*}
+
+\vspace{0.5cm}
+\noindent\textbf{2. Контрпример для $\deg P = 5$:}
+
+\begin{flalign*}
+& P(x) = \frac{x^5}{5} - \frac{2x^3}{3} + x \quad (\deg P = 5 \text{ --- нечетная}) & \\[10pt]
+& P'(x) = x^4 - 2x^2 + 1 = (x^2 - 1)^2 = (x-1)^2(x+1)^2 & \\[10pt]
+& P'(x) = 0 \implies x_1 = -1, \quad x_2 = 1 & \\[10pt]
+& P'(x) \ge 0 \ \forall x \in \mathbb{R} \implies \text{знак не меняется} \implies \text{экстремумов нет} &
+\end{flalign*}
+
+\vspace{0.5cm}
+\noindent\textbf{3. Проверка контрпримера через производные высших порядков:}
+
+\begin{flalign*}
+& P''(x) = 4x^3 - 4x = 4x(x^2 - 1) \implies P''(\pm 1) = 0 & \\[10pt]
+& P'''(x) = 12x^2 - 4 \implies P'''(\pm 1) = 8 \neq 0 & \\[10pt]
+& \implies x_1, x_2 \text{ --- точки перегиба} &
+\end{flalign*}
+
+\vspace{0.5cm}
+\noindent\textbf{4. Общий случай для произвольной нечетной степени $\deg P = 2k+1 \ge 5$:}
+
+\begin{flalign*}
+& \deg P = 2k+1 \ (k \ge 2) \implies \deg P' = 2k & \\[10pt]
+& \text{Пусть } P'(x) = a(x - x_1)^{m_1}(x - x_2)^{m_2}, \text{ где } m_1, m_2 \text{ --- четные, } m_1 + m_2 = 2k & \\[10pt]
+& \implies P'(x) \text{ не меняет знак при переходе через } x_1, x_2 \implies \text{экстремумов нет} &
+\end{flalign*}
+
+\end{document}

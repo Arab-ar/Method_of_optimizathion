@@ -1,1 +1,117 @@
+# Задача 2 — Вариант 17 (Часть 2: Касательный конус)
 
+**Постановка задачи:**
+Исследовать отображение \(F\) на дифференцируемость по Фреше в точке \(z\) и в случае дифференцируемости найти производную по Фреше (визуализация касательного конуса \(T_{(0,0)}M\) для множества \(M = \{x_1 \le 0, x_2 \le 0\}\)).
+
+## 📑 Оглавление
+- [📊 Визуализация касательного конуса](#-визуализация-касательного-конуса)
+- [📄 Документы и исходный код](#-документы-и-исходный-код)
+- [💻 Код Maple (генерация анимации)](#-код-maple-генерация-анимации)
+
+---
+
+## 📊 Визуализация касательного конуса
+
+На графике ниже представлена анимация, иллюстрирующая построение касательного конуса к допустимому множеству в угловой точке.
+
+<p align="left">
+  <!-- Замените путь на ваш сохраненный GIF файл -->
+  <img src="./images/tangent_cone.gif" width="600" alt="Анимация: Касательный конус">
+</p>
+
+**Что изображено на графике (кратко и понятно):**
+* 🔵 **Светло-синяя область** — допустимое множество \(M\) (третий квадрант), где \(x_1 \le 0\) и \(x_2 \le 0\).
+* ⚫ **Черная точка** — исследуемая точка \(O(0,0)\).
+* 🔴 **Красные стрелки (\(\nabla g_1, \nabla g_2\))** — градиенты активных ограничений, указывающие направление «наружу» от допустимой области (вдоль положительных осей).
+* 🟢🟣🟠 **Цветные кривые и векторы** — примеры допустимых траекторий, стремящихся к нулю, и их предельные направления (касательные векторы).
+* 🔵 **Синяя анимированная стрелка** — «заметает» сектор от оси \(x_1\) до оси \(x_2\). Она визуализирует **касательный конус** \(T_{(0,0)}M\). Так как точка угловая, этот конус совпадает с самим третьим квадрантом, показывая все возможные допустимые направления движения из начала координат.
+
+---
+
+## 📄 Документы
+
+*   **[📥 Скачать PDF с подробным решением](./Project/Задача_2_вариант_17_часть_2.pdf)**
+*   **[📝 Скачать исходный код LaTeX](./Codes/Задача_2_вариант_17_часть_2.tex)**
+*   **[💻 Скачать рабочий файл Maple (.mw)](./Codes/Задача_2_вариант_17_часть_2.mw)** *(откроется в программе)*
+*   **[📄 Посмотреть код Maple (.mpl) прямо на сайте](./Codes/Задача_2_вариант_17_часть_2.mpl)** *(текстовая версия)*
+*   **[📥 Скачать Jupiter с подробным решением](./Project/Задача_2_вариант_17_часть_2.ipynb)**
+
+---
+
+> ▶ **Интерактивная версия ноутбука** (с работающими анимациями, ползунком и кнопками скорости):
+> **[Открыть в nbviewer](https://nbviewer.jupyter.org/github/ВАШ_НИК/ВАШ_РЕПОЗИТОРИЙ/blob/main/Задача_2_вариант_17_часть_2/Project/Задача_2_вариант_17_часть_2.ipynb)**
+>
+> GitHub не выполняет JavaScript в `.ipynb`, поэтому интерактивные анимации в ноутбуке работают только через nbviewer, Jupyter или Colab. GIF-версия анимации представлена выше в этом README.
+
+---
+
+## 💻 Код Maple (генерация анимации)
+
+<details>
+<summary><b>Нажмите, чтобы развернуть код Maple (построение графика и анимации)</b></summary>
+
+```maple
+restart;
+with(plots):
+with(plottools):
+
+# 1. Допустимое множество M (третий квадрант)
+M_plot := inequal({x1 <= 0, x2 <= 0}, x1 = -3.5 .. 1, x2 = -3.5 .. 1, 
+    optionsfeasible = [color = "LightBlue", transparency = 0.3], 
+    optionsclosed = [color = black, thickness = 2], 
+    optionsexcluded = [color = "white"]):
+
+Point_O := pointplot([0, 0], symbol = solidcircle, symbolsize = 15, color = black):
+
+# 2. Градиенты (внешние нормали)
+Grad_1 := plots:-arrow([0, 0], [1.5, 0], color = red, thickness = 3, head_length = 0.15):
+Grad_2 := plots:-arrow([0, 0], [0, 1.5], color = red, thickness = 3, head_length = 0.15):
+Text_G1 := textplot([1.6, 0.2, "∇g1"], font = [TIMES, BOLD, 14], color = red):
+Text_G2 := textplot([0.2, 1.6, "∇g2"], font = [TIMES, BOLD, 14], color = red):
+
+# 3. Допустимые кривые
+Curve_1 := plot([-t, -t^2, t = 0 .. 2.5], color = green, thickness = 2):
+Curve_2 := plot([-t^2, -t, t = 0 .. 2.5], color = purple, thickness = 2):
+Curve_3 := plot([-t, -t, t = 0 .. 2.5], color = orange, thickness = 2):
+
+# Подписи к кривым
+Text_C1 := textplot([-2.2, -0.5, "x2 = -x1²"], font = [TIMES, ITALIC, 12], color = green):
+Text_C2 := textplot([-0.5, -2.2, "x1 = -x2²"], font = [TIMES, ITALIC, 12], color = purple):
+Text_C3 := textplot([-1.5, -1.5, "x1 = x2"], font = [TIMES, ITALIC, 12], color = orange):
+
+# 4. Предельные векторы направлений
+Vec_1 := plots:-arrow([0, 0], [-2, 0], color = green, thickness = 3, head_length = 0.15):
+Vec_2 := plots:-arrow([0, 0], [0, -2], color = purple, thickness = 3, head_length = 0.15):
+Vec_3 := plots:-arrow([0, 0], [-2, -2], color = orange, thickness = 3, head_length = 0.15):
+
+# 5. Анимация движения точек по кривым
+Anim_Pt1 := animate(pointplot, [[-t, -t^2]], t = 2.5 .. 0, frames = 60, symbol = solidcircle, symbolsize = 12, color = green):
+Anim_Pt2 := animate(pointplot, [[-t^2, -t]], t = 2.5 .. 0, frames = 60, symbol = solidcircle, symbolsize = 12, color = purple):
+Anim_Pt3 := animate(pointplot, [[-t, -t]], t = 2.5 .. 0, frames = 60, symbol = solidcircle, symbolsize = 12, color = orange):
+
+# 6. Анимация заметания касательного конуса (синий вектор)
+Anim_Cone := animate(
+    plots:-arrow, 
+    [[0, 0], [2.5*cos(theta), 2.5*sin(theta)], color = blue, thickness = 4, head_length = 0.15], 
+    theta = Pi .. (3*Pi)/2, 
+    frames = 90
+):
+
+# Подпись к конусу
+Text_Cone := textplot([-2.5, -2.8, "T(0,0)M"], font = [TIMES, BOLD, 14], color = blue):
+
+# 7. Сборка всего графика с последовательной анимацией
+display(
+    M_plot, Point_O, 
+    Grad_1, Grad_2, Text_G1, Text_G2, 
+    Curve_1, Curve_2, Curve_3, Text_C1, Text_C2, Text_C3,
+    Vec_1, Vec_2, Vec_3, 
+    Anim_Pt1, Anim_Pt2, Anim_Pt3, 
+    Anim_Cone, Text_Cone,
+    title = "Касательный конус T(0,0)M", 
+    titlefont = [TIMES, BOLD, 16], 
+    axes = boxed, labels = ["x1", "x2"], 
+    view = [-3.5 .. 2.5, -3.5 .. 2.5], 
+    scaling = constrained,
+    insequence = true
+);

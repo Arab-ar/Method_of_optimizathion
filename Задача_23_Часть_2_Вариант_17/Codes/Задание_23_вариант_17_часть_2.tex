@@ -1,0 +1,531 @@
+\documentclass[12pt,a4paper]{article}
+%------------------------------------------------
+% Кодировки и шрифты
+%------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb,mathtools}
+%------------------------------------------------
+% Оформление
+%------------------------------------------------
+\usepackage{geometry}
+\geometry{left=20mm,right=20mm,top=20mm,bottom=20mm}
+\usepackage{setspace}
+\onehalfspacing
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7em}
+\allowdisplaybreaks
+
+\begin{document}
+
+\noindent{\Large\textbf{Расстояние между точками на поверхности \(z=x^2+y^2\)}}
+\vspace{0.4cm}
+
+\textbf{Дано:}
+\[
+A(1,0,1), \qquad B(0,3,9).
+\]
+Поверхность:
+\[
+F(x,y,z)=x^2+y^2-z=0.
+\]
+
+\textbf{Найти:} длину геодезической, соединяющей точки \(A\) и \(B\).\\
+
+%================================================
+\textbf{\\1. Параметризация поверхности}
+%================================================
+
+Поверхность задана уравнением \(z=x^2+y^2\), введём полярные координаты:
+\[
+x=r\cos\varphi,\qquad y=r\sin\varphi\Rightarrow\ z=r^2\cos^2\varphi+r^2\sin^2\varphi.
+\]
+\(\cos^2\varphi+\sin^2\varphi=1\):
+\[
+z=r^2.
+\]
+\(\Rightarrow\)\[
+\boxed{\vec r(r,\varphi)=(r\cos\varphi,r\sin\varphi,r^2)}
+\]
+
+Для точки \(A(1,0,1)\):
+\[
+r_A=\sqrt{1^2+0^2}=1,
+\]
+\[
+\cos\varphi_A=1,\qquad \sin\varphi_A=0.
+\]
+\(\Rightarrow\)
+\[
+\boxed{A:(r,\varphi)=\left(1,0\right)}
+\]
+
+Для точки \(B(0,3,9)\):
+\[
+r_B=\sqrt{0^2+3^2}=3,
+\]
+\[
+\cos\varphi_B=0,\qquad \sin\varphi_B=1.
+\]
+\(\Rightarrow\)
+\[
+\boxed{B:(r,\varphi)=\left(3,\frac{\pi}{2}\right)}
+\]
+
+\(\Rightarrow\) Гр. усл.:
+\[
+r(0)=1,\qquad r(S)=3,
+\]
+\[
+\varphi(0)=0,\qquad \varphi(S)=\frac{\pi}{2}.
+\]
+\newpage
+%================================================
+\textbf{2. Вычисление первой квадратичной формы и метрики}
+%================================================
+
+Используем формулу первой квадратичной формы:
+\[
+ds^2=E\,dr^2+2F\,dr\,d\varphi+G\,d\varphi^2,
+\]
+
+\[
+E=\langle\vec r_r,\vec r_r\rangle,
+\qquad
+F=\langle\vec r_r,\vec r_\varphi\rangle,
+\qquad
+G=\langle\vec r_\varphi,\vec r_\varphi\rangle.
+\]
+
+\[
+\vec r_r=\frac{\partial\vec r}{\partial r}=(\cos\varphi,\sin\varphi,2r),
+\]
+\[
+\vec r_\varphi=\frac{\partial\vec r}{\partial\varphi}=(-r\sin\varphi,r\cos\varphi,0).
+\]
+
+\[
+E=\langle\vec r_r,\vec r_r\rangle.
+\]
+\[
+E=\cos^2\varphi+\sin^2\varphi+4r^2.
+\]
+\(\Rightarrow\)
+\[
+\boxed{E=1+4r^2}
+\]
+
+\[
+F=\langle\vec r_r,\vec r_\varphi\rangle.
+\]
+\[
+F=-r\cos\varphi\sin\varphi+r\sin\varphi\cos\varphi=0.
+\]
+\(\Rightarrow\)
+\[
+\boxed{F=0}
+\]
+
+\[
+G=\langle\vec r_\varphi,\vec r_\varphi\rangle.
+\]
+\[
+G=r^2\sin^2\varphi+r^2\cos^2\varphi.
+\]
+\(\Rightarrow\)
+\[
+\boxed{G=r^2}
+\]
+
+\(\Rightarrow\) Первая квадратичная форма:
+\[
+\boxed{ds^2=(1+4r^2)dr^2+r^2d\varphi^2}
+\]
+
+Матрица метрики:
+\[
+\boxed{(g_{ij})=\begin{pmatrix} 1+4r^2 & 0 \\ 0 & r^2 \end{pmatrix}}
+\]
+
+Обратная матрица метрики:
+\[
+(g^{ij})=\begin{pmatrix} \dfrac{1}{1+4r^2} & 0 \\ 0 & \dfrac{1}{r^2} \end{pmatrix}.
+\]\\
+
+%================================================
+\textbf{\\3. Функционал длины и уравнения Эйлера--Лагранжа}
+%================================================
+
+Используем §13.4, стр. 94 конспекта: уравнения Эйлера--Лагранжа для функционала
+\[
+S[\gamma]=\int_a^b L(u,\dot u,t)\,dt
+\]
+имеют вид
+\[
+\boxed{\frac{\partial L}{\partial u^i} - \frac{d}{dt} \left( \frac{\partial L}{\partial\dot u^i} \right)=0.}
+\]
+
+Согласно Теореме 23, §13.5, стр. 95--96, геодезические являются экстремалями функционала длины:
+\[
+ds^2=(1+4r^2)dr^2+r^2d\varphi^2 |: ds^2
+\]
+
+\[
+1=(1+4r^2)\left(\frac{dr}{ds}\right)^2+r^2\left(\frac{d\varphi}{ds}\right)^2.
+\]
+
+\[
+\dot r=\frac{dr}{ds},\qquad \dot\varphi=\frac{d\varphi}{ds}.
+\]
+\(\Rightarrow\) Функционал длины:
+\[
+S[\gamma]=\int \sqrt{(1+4r^2)\dot r^2+r^2\dot\varphi^2}\,ds.
+\]
+\(\Rightarrow\) Лагранжиан:
+\[
+L=\sqrt{(1+4r^2)\dot r^2+r^2\dot\varphi^2}.
+\]
+Поскольку \(s\) является натуральным параметром, скорость единичная: \(L=1\).
+\(\Rightarrow\)\[\boxed{(1+4r^2)\dot r^2+r^2\dot\varphi^2=1.}\]
+\newpage
+%================================================
+\textbf{4. Первый интеграл. Теорема Клеро}
+%================================================
+
+Используем Теорему 21 (Клеро), §13.2, стр. 91. Для поверхности вращения:
+\[
+\rho(s)\cos\alpha(s)=\mathrm{const},
+\]
+где \(\rho\) -- расстояние от точки до оси вращения, а \(\alpha\) -- угол между геодезической и параллелью.
+
+В нашем случае \(\rho=r\). Единичный касательный вектор имеет компоненту в направлении параллели \(r\dot\varphi\).
+\(\Rightarrow\)
+\[
+\cos\alpha=r\dot\varphi.
+\]
+Подставляем в теорему Клеро:
+\[
+r\cos\alpha=\mathrm{const},
+\]
+\[
+r\cdot r\dot\varphi=\mathrm{const}.
+\]
+Обозначим постоянную через \(c\):
+\[
+\boxed{r^2\dot\varphi=c.}
+\]
+
+Получили первый интеграл геодезической. Его также можно получить непосредственно из уравнения Эйлера--Лагранжа. Действительно, лагранжиан не зависит явно от \(\varphi\):
+\[
+\frac{\partial L}{\partial\varphi}=0.
+\]
+Уравнение Эйлера--Лагранжа для \(\varphi\):
+\[
+\frac{d}{ds}\left(\frac{\partial L}{\partial\dot\varphi}\right)=0.
+\]
+
+\[
+\frac{\partial L}{\partial\dot\varphi}=\frac{r^2\dot\varphi}{\sqrt{(1+4r^2)\dot r^2+r^2\dot\varphi^2}}.
+\]
+\(L=1\):
+\[
+\frac{d}{ds}(r^2\dot\varphi)=0.
+\]
+
+\[
+r^2\dot\varphi=c.
+\]
+Совпадает с результатом Теоремы Клеро.
+\(\Rightarrow\) Выражаем угловую скорость:
+\[
+\boxed{\dot\varphi=\frac{c}{r^2}.}
+\]
+\newpage
+%================================================
+\textbf{5. Выражение для радиальной скорости}
+%================================================
+
+Используем условие натуральной параметризации:
+\[
+(1+4r^2)\dot r^2+r^2\dot\varphi^2=1.
+\]
+Подставляем первый интеграл:
+\[
+(1+4r^2)\dot r^2+r^2\left(\frac{c}{r^2}\right)^2=1.
+\]
+\(\Rightarrow\)
+\[
+(1+4r^2)\dot r^2+\frac{c^2}{r^2}=1.
+\]
+\(\Rightarrow\)
+\[
+(1+4r^2)\dot r^2=1-\frac{c^2}{r^2}.
+\]
+\(\Rightarrow\)
+\[
+(1+4r^2)\dot r^2=\frac{r^2-c^2}{r^2}.
+\]
+\(\Rightarrow\)
+\[
+\dot r^2=\frac{r^2-c^2}{r^2(1+4r^2)}.
+\]
+\(\Rightarrow\)
+\[
+\dot r=\pm\frac{\sqrt{r^2-c^2}}{r\sqrt{1+4r^2}}.
+\]
+Рассматрим ветвь геодезической, на которой \(r\) возрастает от 1 до 3.\\
+
+\\ \(\Rightarrow\) Выбираем положительный знак:
+\[
+\boxed{\frac{dr}{ds}=\frac{\sqrt{r^2-c^2}}{r\sqrt{1+4r^2}}.}
+\]
+\newpage
+%================================================
+\textbf{6. Дифференциальное уравнение геодезической}
+%================================================
+
+Найдём зависимость \(\varphi\) от \(r\):
+\[
+\frac{d\varphi}{dr}=\frac{d\varphi/ds}{dr/ds}.
+\]
+\(\Rightarrow\)
+\[
+\frac{d\varphi}{dr}=\frac{\dfrac{c}{r^2}}{\dfrac{\sqrt{r^2-c^2}}{r\sqrt{1+4r^2}}}.
+\]
+\(\Rightarrow\)
+\[
+\frac{d\varphi}{dr}=\frac{c}{r^2}\cdot\frac{r\sqrt{1+4r^2}}{\sqrt{r^2-c^2}}.
+\]
+\(\Rightarrow\)
+\[
+\boxed{\frac{d\varphi}{dr}=\frac{c\sqrt{1+4r^2}}{r\sqrt{r^2-c^2}}.}
+\]
+\\
+%================================================
+\textbf{7. Нахождение постоянной \(c\)}
+%================================================
+\[
+d\varphi=\frac{c\sqrt{1+4r^2}}{r\sqrt{r^2-c^2}}\,dr.
+\]
+\(A:(1,0)\), \(B:\left(3,\frac{\pi}{2}\right)\).
+\(\Rightarrow\)
+\[
+\int_{\varphi_A}^{\varphi_B}d\varphi=\int_{r_A}^{r_B}\frac{c\sqrt{1+4r^2}}{r\sqrt{r^2-c^2}}\,dr.
+\]
+\(\Rightarrow\)
+\[
+\int_0^{\pi/2}d\varphi=\int_1^3\frac{c\sqrt{1+4r^2}}{r\sqrt{r^2-c^2}}\,dr.
+\]
+\(\Rightarrow\)
+\[
+\boxed{\int_1^3\frac{c\sqrt{1+4r^2}}{r\sqrt{r^2-c^2}}\,dr=\frac{\pi}{2}.}
+\]
+
+Для взятия интеграла выполним замену переменной:
+\[
+u=\sqrt{r^2-c^2}.
+\]
+\(\Rightarrow\)
+\[
+u^2=r^2-c^2.
+\]
+\(\Rightarrow\)
+\[
+2u\,du=2r\,dr \implies r\,dr=u\,du.
+\]
+
+\[
+1+4r^2 = 1+4(u^2+c^2) = 1+4c^2+4u^2.
+\]
+\(r\,dr=u\,du\):
+\[
+\frac{\sqrt{1+4r^2}}{r\sqrt{r^2-c^2}}\,dr = \frac{\sqrt{1+4c^2+4u^2}}{r \cdot u} \cdot \frac{u\,du}{r} = \frac{\sqrt{1+4c^2+4u^2}}{r^2}\,du.
+\]
+\(r^2 = u^2+c^2\):
+\[
+\frac{\sqrt{1+4r^2}}{r\sqrt{r^2-c^2}}\,dr = \frac{\sqrt{1+4c^2+4u^2}}{u^2+c^2}\,du.
+\]
+При \(r=1\):
+\[
+u_1=\sqrt{1^2-c^2}=\sqrt{1-c^2}.
+\]
+\(r=3\):
+\[
+u_2=\sqrt{3^2-c^2}=\sqrt{9-c^2}.
+\]
+\(\Rightarrow\)
+\[
+\int_{\sqrt{1-c^2}}^{\sqrt{9-c^2}}\frac{c\sqrt{1+4c^2+4u^2}}{u^2+c^2}\,du=\frac{\pi}{2}.
+\]
+
+Уравнение относительно неизвестной постоянной \(c\). Полученный интеграл является эллиптическим и не выражается через простые элементарные функции.\\
+
+\(\Rightarrow\) Решаем уравнение численно. Вводим функцию:
+\[
+f(c)=\int_{\sqrt{1-c^2}}^{\sqrt{9-c^2}}\frac{c\sqrt{1+4c^2+4u^2}}{u^2+c^2}\,du-\frac{\pi}{2}.
+\]
+\(\Rightarrow\)\(f(c)=0\).
+\(\Rightarrow\) Численное решение:
+\[
+c\approx0.62166256.
+\]
+\(\Rightarrow\) Проверка подстановкой:
+\[
+\int_1^3\frac{0.62166256\sqrt{1+4r^2}}{r\sqrt{r^2-0.62166256^2}}\,dr\approx1.57079633.
+\]
+При этом \(\frac{\pi}{2}\approx1.57079633\).
+\(\Rightarrow\)
+\[
+\boxed{c\approx0.62166256.}
+\]
+\newpage
+%================================================
+\textbf{8. Вычисление длины геодезической}
+%================================================
+
+По определению натурального параметра:
+\[
+S=\int_A^B ds.
+\]
+Из выражения для радиальной скорости получаем:
+\[
+\frac{ds}{dr}=\frac{r\sqrt{1+4r^2}}{\sqrt{r^2-c^2}}.
+\]
+\(\Rightarrow\)
+\[
+S=\int_1^3\frac{r\sqrt{1+4r^2}}{\sqrt{r^2-c^2}}\,dr.
+\]
+\(\Rightarrow\) Подставляем найденное значение \(c\):
+\[
+S=\int_1^3\frac{r\sqrt{1+4r^2}}{\sqrt{r^2-0.62166256^2}}\,dr.
+\]
+\(\Rightarrow\) Сделаем замену:
+\[
+u=\sqrt{r^2-c^2}.
+\]
+\(\Rightarrow\)
+\[
+u^2=r^2-c^2.
+\]
+\(\Rightarrow\)
+\[
+2u\,du=2r\,dr.
+\]
+\(\Rightarrow\)
+\[
+r\,dr=u\,du.
+\]
+\(\Rightarrow\)
+\[
+r^2=u^2+c^2.
+\]
+\(\Rightarrow\)
+\[
+1+4r^2=1+4u^2+4c^2.
+\]
+\(\Rightarrow\)
+\[
+S=\int\frac{r\sqrt{1+4u^2+4c^2}}{u}\,dr.
+\]
+\(r\,dr=u\,du\):
+\[
+S=\int\sqrt{1+4u^2+4c^2}\,du.
+\]
+\(\Rightarrow\)
+\[
+a^2=1+4c^2.
+\]
+\(\Rightarrow\)
+\[
+S=\int\sqrt{4u^2+a^2}\,du.
+\]
+\(\Rightarrow\)
+\[
+\int\sqrt{4u^2+a^2}\,du=\frac{u}{2}\sqrt{4u^2+a^2}+\frac{a^2}{4}\ln\left(2u+\sqrt{4u^2+a^2}\right).
+\]
+\(\Rightarrow\)
+\[
+S=\left[\frac{u}{2}\sqrt{4u^2+a^2}+\frac{a^2}{4}\ln\left(2u+\sqrt{4u^2+a^2}\right)\right]_{u_1}^{u_2}.
+\]
+
+При \(r=1\):
+\[
+u_1=\sqrt{1-c^2}=\sqrt{1-0.62166256^2}\approx0.78328517.
+\]
+При \(r=3\):
+\[
+u_2=\sqrt{9-c^2}=\sqrt{9-0.62166256^2}\approx2.93488256.
+\]
+\(\Rightarrow\)
+\[
+a^2=1+4c^2=1+4\cdot0.62166256^2\approx2.54585734.
+\]
+\(\Rightarrow\)
+\[
+S=\left[\frac{u}{2}\sqrt{4u^2+2.54585734}+\frac{2.54585734}{4}\ln\left(2u+\sqrt{4u^2+2.54585734}\right)\right]_{0.78328517}^{2.93488256}.
+\]
+\(\Rightarrow\)
+\[
+\boxed{S\approx8.77926668.}
+\]
+\(\Rightarrow\) Длина найденной геодезической:
+\[
+\boxed{S_{\text{геод}}\approx8.7793.}
+\]
+
+%================================================
+\textbf{9. Евклидово расстояние между точками}
+%================================================
+
+Для сравнения найдём обычное расстояние между точками в пространстве.\\
+\(\Rightarrow\)
+\[
+\rho(A,B)=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}.
+\]
+\(\Rightarrow\)
+\[
+\rho(A,B)=\sqrt{(0-1)^2+(3-0)^2+(9-1)^2}.
+\]
+\(\Rightarrow\)
+\[
+\rho(A,B)=\sqrt{(-1)^2+3^2+8^2}.
+\]
+\(\Rightarrow\)
+\[
+\rho(A,B)=\sqrt{1+9+64}.
+\]
+\(\Rightarrow\)
+\[
+\boxed{\rho(A,B)=\sqrt{74}\approx8.6023.}
+\]
+\newpage
+%================================================
+\textbf{10. Итоговый ответ}
+%================================================
+
+\(\Rightarrow\)
+\[
+S_{\text{геод}}\approx8.7793.
+\]
+\(\Rightarrow\)
+\[
+\rho_{\text{Euclid}}=\sqrt{74}\approx8.6023.
+\]
+\(\Rightarrow\) Разница:
+\[
+\Delta S=8.77926668-8.60232527.
+\]
+\(\Rightarrow\)
+\[
+\boxed{\Delta S\approx0.17694.}
+\]
+\(\Rightarrow\)
+\[
+\boxed{\begin{aligned} S_{\text{геод}}&\approx8.7793,\\ \rho_{\text{Euclid}}&\approx8.6023. \end{aligned}}
+\]
+
+Геодезическая длина больше евклидова расстояния, поскольку геодезическая проходит по поверхности, а евклидово расстояние измеряется по прямому отрезку в пространстве.
+
+\end{document}

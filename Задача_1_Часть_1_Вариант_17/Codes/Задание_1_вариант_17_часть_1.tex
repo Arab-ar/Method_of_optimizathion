@@ -1,0 +1,253 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, left=20mm, right=20mm, top=20mm, bottom=20mm}
+
+\begin{document}
+
+\section*{Исследование функции на экстремум}
+
+\noindent 1. Постановка задачи: 
+\[
+u(x, y, z) = xy^2 z^3 (1 - x - 2y - 3z)
+\]
+
+\noindent 2. Частные производные первого порядка:
+\[
+u'_x = y^2 z^3 (1 - 2x - 2y - 3z), \quad
+u'_y = 2xyz^3 (1 - x - 3y - 3z), \quad
+u'_z = 3xy^2 z^2 (1 - x - 2y - 4z)
+\]
+
+\noindent 3. Система (необходимое условие):
+\[
+\begin{cases}
+y^2 z^3 (1 - 2x - 2y - 3z) = 0 \\
+2xyz^3 (1 - x - 3y - 3z) = 0 \\
+3xy^2 z^2 (1 - x - 2y - 4z) = 0
+\end{cases}
+\]
+
+\noindent 4. Дерево разбора вариантов:
+\[
+u'_x = 0 \implies \begin{cases} y = 0 \\ z = 0 \\ 1 - 2x - 2y - 3z = 0 \end{cases}
+\]
+
+\noindent \textbf{Ветвь 1.} \(y = 0 \implies u'_y \equiv 0, u'_z \equiv 0 \implies \text{плоскость } y = 0\)
+
+\noindent \textbf{Ветвь 2.} \(y \neq 0 \implies \begin{cases} u'_y \equiv 0 \\ u'_z \equiv 0 \end{cases} \implies \text{плоскость } z = 0\)
+
+\begin{align*}
+\textbf{Ветвь 3.} \quad & y \neq 0 \implies 1 - 2x - 2y - 3z = 0 \\
+&\implies \begin{cases} x = 0 \\ 1 - x - 3y - 3z = 0 \end{cases}
+\end{align*}
+
+\noindent \textbf{Случай 3.1.} \(x = 0 \implies \begin{cases} u'_z \equiv 0 \\ 2y + 3z = 1 \end{cases} \implies \text{прямая } x=0, 2y+3z=1\)
+
+\noindent \textbf{Случай 3.2.} \(x \neq 0 \implies \begin{cases} 2x + 2y + 3z = 1 \quad (1) \\ x + 3y + 3z = 1 \quad (2) \\ x + 2y + 4z = 1 \quad (3) \end{cases}\)
+
+\begin{align*}
+&(1)-(2) \implies x - y = 0 \\
+&(2)-(3) \implies y - z = 0 \\
+&\implies x = y = z \implies 7x = 1 \implies M_0 \left( \frac{1}{7}, \frac{1}{7}, \frac{1}{7} \right)
+\end{align*}
+
+\noindent 5. Частные производные второго порядка:
+\begin{align*}
+u''_{xx} &= -2y^2z^3, & u''_{xy} &= 2yz^3(1-2x-3y-3z), & u''_{xz} &= 3y^2z^2(1-2x-2y-4z), \\
+u''_{yy} &= 2xz^3(1-x-6y-3z), & u''_{yz} &= 6xyz^2(1-x-3y-4z), & u''_{zz} &= 6xy^2z(1-x-2y-6z)
+\end{align*}
+
+\noindent 6. Исследование изолированной точки \(M_0(1/7, 1/7, 1/7)\):
+\begin{gather*}
+u''_{xx} = -\frac{2}{7^5}, \quad u''_{xy} = -\frac{2}{7^5}, \quad u''_{xz} = -\frac{3}{7^5}, \\
+u''_{yy} = -\frac{6}{7^5}, \quad u''_{yz} = -\frac{6}{7^5}, \quad u''_{zz} = -\frac{12}{7^5}
+\end{gather*}
+\[
+H = \frac{1}{7^5} \begin{pmatrix} -2 & -2 & -3 \\ -2 & -6 & -6 \\ -3 & -6 & -12 \end{pmatrix}
+\]
+\begin{align*}
+\Delta_1 &= -\frac{2}{7^5} < 0 \\
+\Delta_2 &= \frac{12-4}{7^{10}} = \frac{8}{7^{10}} > 0 \\
+\Delta_3 &= \frac{-72+12+18}{7^{15}} = -\frac{42}{7^{15}} < 0 \\
+&\implies H < 0 \implies \text{строгий максимум}
+\end{align*}
+\[
+u(M_0) = \frac{1}{7^7}
+\]
+
+\noindent 7. Неизолированные критические множества:
+\[
+\Delta u = u(x_0 + \Delta x, y_0 + \Delta y, z_0 + \Delta z) - u(x_0, y_0, z_0)
+\]
+
+\noindent \textbf{А. Плоскость } \(z_0 = 0\):
+\[
+\Delta u = (x_0+\Delta x)(y_0+\Delta y)^2 (\Delta z)^3 (1 - x_0 - \Delta x - 2y_0 - 2\Delta y - 3\Delta z)
+\]
+
+\noindent \textbf{A1.}
+\begin{align*}
+&\begin{cases} x_0 \neq 0 \\ y_0 \neq 0 \\ 1 - x_0 - 2y_0 \neq 0 \end{cases} \implies \Delta u(\Delta x=0, \Delta y=0) = x_0 y_0^2 (1 - x_0 - 2y_0) (\Delta z)^3 \\
+&\implies \Delta z \to -\Delta z \implies \Delta u \to -\Delta u \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{A2.}
+\begin{align*}
+&\begin{cases} x_0 = 0 \\ y_0 \neq 0 \\ 1 - 2y_0 \neq 0 \end{cases} \implies \Delta u(\Delta y=0, \Delta z=\epsilon) = \Delta x y_0^2 \epsilon^3 (1 - 2y_0 - \Delta x) \\
+&\text{При малых } \Delta x: (1 - 2y_0 - \Delta x) \text{ сохраняет знак} \\
+&\implies \Delta x \to -\Delta x \implies \Delta u \text{ меняет знак} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{A3.}
+\begin{align*}
+&\begin{cases} x_0 = 0 \\ y_0 = 1/2 \\ 1 - 2y_0 = 0 \end{cases} \implies \Delta u = -\Delta x \left(\frac{1}{2}+\Delta y\right)^2(\Delta z)^3(\Delta x+2\Delta y+3\Delta z) \\
+&\text{Фиксируем } \Delta y = 0, \Delta x = \epsilon > 0 \implies \Delta u = -\frac{1}{4}\epsilon(\Delta z)^3(\epsilon + 3\Delta z) \\
+&\text{Выберем } |\Delta z| < \frac{\epsilon}{3} \implies (\epsilon + 3\Delta z) > 0 \text{ (скобка знак не меняет)} \\
+&\text{Знак } \Delta u \text{ определяется множителем } (\Delta z)^3: \\
+&\Delta z > 0 \implies \Delta u < 0; \quad \Delta z < 0 \implies \Delta u > 0 \\
+&\implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{A4.}
+\begin{align*}
+&\begin{cases} x_0 \neq 0 \\ y_0 = 0 \\ 1 - x_0 \neq 0 \end{cases} \implies \Delta u(\Delta x=0, \Delta z=\epsilon) = x_0 (1 - x_0) (\Delta y)^2 \epsilon^3 \\
+&\implies \Delta z \to -\Delta z \implies \Delta u \to -\Delta u \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{A5.}
+\begin{align*}
+&\begin{cases} x_0 = 1 \\ y_0 = 0 \\ 1 - x_0 = 0 \end{cases} \implies \Delta u = (1+\Delta x)(\Delta y)^2(\Delta z)^3(-\Delta x - 2\Delta y - 3\Delta z) \\
+&\text{Фиксируем } \Delta y = 0, \Delta x = \epsilon > 0 \implies \Delta u = -\epsilon(1+\epsilon)(\Delta z)^3(\epsilon + 3\Delta z) \\
+&\text{Аналогично A3: при } |\Delta z| < \frac{\epsilon}{3} \text{ скобка } > 0, \text{ знак меняет } (\Delta z)^3 \\
+&\implies \Delta z \to -\Delta z \implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{A6.}
+\begin{align*}
+&\begin{cases} x_0 \neq 0 \\ y_0 \neq 0 \\ 1 - x_0 - 2y_0 = 0 \end{cases} \implies \Delta u = (x_0+\Delta x)(y_0+\Delta y)^2(\Delta z)^3(-\Delta x - 2\Delta y - 3\Delta z) \\
+&\text{Путь 1: } \Delta y = 0, \Delta x = -4\Delta z \implies \Delta u = x_0 y_0^2 (\Delta z)^4 + O((\Delta z)^5) > 0 \\
+&\text{Путь 2: } \Delta y = 0, \Delta x = -2\Delta z \implies \Delta u = -x_0 y_0^2 (\Delta z)^4 + O((\Delta z)^5) < 0 \\
+&\implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{A7.}
+\begin{align*}
+&\begin{cases} x_0 = 0 \\ y_0 = 0 \\ 1 \neq 0 \end{cases} \implies \Delta u(\Delta y=1, \Delta z=\epsilon) = \Delta x(\Delta z)^3(1-\Delta x-2-3\Delta z) \\
+&\implies \Delta x \to -\Delta x \implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{A8.}
+\begin{align*}
+&\begin{cases} x_0 = 0 \\ y_0 = 0 \\ 1 = 0 \end{cases} \implies \text{невозможно}
+\end{align*}
+
+\vspace{0.5cm}
+\noindent \textbf{Б. Плоскость } \(y_0 = 0\):
+\[
+\Delta u = (x_0+\Delta x)(\Delta y)^2(z_0+\Delta z)^3 (1 - x_0 - \Delta x - 3z_0 - 3\Delta z - 2\Delta y)
+\]
+
+\noindent \textbf{Б1.}
+\begin{align*}
+&\begin{cases} x_0 \neq 0 \\ z_0 \neq 0 \\ 1 - x_0 - 3z_0 \neq 0 \end{cases} \implies \Delta u(\Delta x=0, \Delta z=0) = x_0 z_0^3 (1 - x_0 - 3z_0) (\Delta y)^2 \\
+&\implies \begin{cases} x_0 z_0^3 (1 - x_0 - 3z_0) > 0 \implies \Delta u \ge 0 \implies \text{нестрогий минимум} \\ x_0 z_0^3 (1 - x_0 - 3z_0) < 0 \implies \Delta u \le 0 \implies \text{нестрогий максимум} \end{cases}
+\end{align*}
+
+\noindent \textbf{Б2.}
+\begin{align*}
+&\begin{cases} x_0 = 0 \\ z_0 \neq 0 \\ 1 - 3z_0 \neq 0 \end{cases} \implies \Delta u(\Delta y=\epsilon, \Delta z=0) = \Delta x \cdot \epsilon^2 \cdot z_0^3 (1 - 3z_0) \\
+&\implies \Delta x \to -\Delta x \implies \Delta u \to -\Delta u \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{Б3.}
+\begin{align*}
+&\begin{cases} x_0 \neq 0 \\ z_0 = 0 \\ 1 - x_0 \neq 0 \end{cases} \implies \Delta u(\Delta x=0, \Delta y=0) = x_0 (1 - x_0) (\Delta z)^3 \\
+&\implies \Delta z \to -\Delta z \implies \Delta u \to -\Delta u \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{Б4.}
+\begin{align*}
+&\begin{cases} x_0 \neq 0 \\ z_0 \neq 0 \\ 1 - x_0 - 3z_0 = 0 \end{cases} \implies \Delta u = (x_0+\Delta x)(\Delta y)^2(z_0+\Delta z)^3(-\Delta x - 3\Delta z - 2\Delta y) \\
+&\text{Путь 1: } \Delta y = \epsilon, \Delta x = -4\epsilon, \Delta z = 0 \implies \Delta u = 2 x_0 z_0^3 \epsilon^3 + O(\epsilon^4) \\
+&\text{Путь 2: } \Delta y = \epsilon, \Delta x = 0, \Delta z = 0 \implies \Delta u = -2 x_0 z_0^3 \epsilon^3 \\
+&\implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{Б5.}
+\begin{align*}
+&\begin{cases} x_0 = 0 \\ z_0 = 1/3 \\ 1 - 3z_0 = 0 \end{cases} \implies \Delta u = \Delta x(\Delta y)^2(1/3+\Delta z)^3(-\Delta x - 3\Delta z - 2\Delta y) \\
+&\text{Путь 1: } \Delta y = \epsilon, \Delta x = \epsilon, \Delta z = 0 \implies \Delta u = -\frac{1}{9}\epsilon^4 < 0 \\
+&\text{Путь 2: } \Delta y = \epsilon, \Delta x = -\epsilon, \Delta z = 0 \implies \Delta u = \frac{1}{27}\epsilon^4 > 0 \\
+&\implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{Б6.}
+\begin{align*}
+&\begin{cases} x_0 = 1 \\ z_0 = 0 \\ 1 - x_0 = 0 \end{cases} \implies \Delta u = (1+\Delta x)(\Delta y)^2(\Delta z)^3(-\Delta x - 3\Delta z - 2\Delta y) \\
+&\text{Фиксируем } \Delta y = 0, \Delta x = \epsilon > 0 \implies \Delta u = -\epsilon(1+\epsilon)(\Delta z)^3(\epsilon + 3\Delta z) \\
+&\text{Аналогично A3: при } |\Delta z| < \frac{\epsilon}{3} \text{ скобка } > 0, \text{ знак меняет } (\Delta z)^3 \\
+&\implies \Delta z \to -\Delta z \implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{Б7.}
+\begin{align*}
+&\begin{cases} x_0 = 0 \\ z_0 = 0 \\ 1 \neq 0 \end{cases} \implies \Delta u(\Delta y=1) = \Delta x(\Delta z)^3(1-\Delta x-3\Delta z-2) \\
+&\implies \Delta x \to -\Delta x \implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{Б8.}
+\begin{align*}
+&\begin{cases} x_0 = 0 \\ z_0 = 0 \\ 1 = 0 \end{cases} \implies \text{невозможно}
+\end{align*}
+
+\vspace{0.5cm}
+\noindent \textbf{В. Прямая } \(x_0 = 0, 2y_0 + 3z_0 = 1\):
+\[
+\Delta u = \Delta x (y_0+\Delta y)^2 (z_0+\Delta z)^3 (-\Delta x - 2\Delta y - 3\Delta z)
+\]
+
+\noindent \textbf{В1.}
+\begin{align*}
+&\begin{cases} y_0 \neq 0 \\ z_0 \neq 0 \end{cases} \implies \Delta u = \Delta x (y_0+\Delta y)^2 (z_0+\Delta z)^3 (-\Delta x - 2\Delta y - 3\Delta z) \\
+&\text{Путь 1: } \Delta y = \Delta z = 0 \implies \Delta u = -y_0^2 z_0^3 (\Delta x)^2 < 0 \\
+&\text{Путь 2: } \Delta y = -\Delta x, \Delta z = 0 \implies \Delta u = y_0^2 z_0^3 (\Delta x)^2 > 0 \\
+&\implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{В2.}
+\begin{align*}
+&\begin{cases} y_0 = 0 \\ z_0 = 1/3 \end{cases} \implies \Delta u = \frac{1}{27} \Delta x (\Delta y)^2 (-\Delta x - 2\Delta y - 3\Delta z) \\
+&\text{Путь 1: } \Delta y = \epsilon, \Delta x = \epsilon, \Delta z = 0 \implies \Delta u = -\frac{1}{9}\epsilon^4 < 0 \\
+&\text{Путь 2: } \Delta y = \epsilon, \Delta x = -\epsilon, \Delta z = 0 \implies \Delta u = \frac{1}{27}\epsilon^4 > 0 \\
+&\implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{В3.}
+\begin{align*}
+&\begin{cases} y_0 = 1/2 \\ z_0 = 0 \end{cases} \implies \Delta u = \frac{1}{4} \Delta x (\Delta z)^3 (-\Delta x - 2\Delta y - 3\Delta z) \\
+&\text{Фиксируем } \Delta y = 0, \Delta x = \epsilon > 0 \implies \Delta u = -\frac{1}{4}\epsilon(\Delta z)^3(\epsilon + 3\Delta z) \\
+&\text{Аналогично A3: при } |\Delta z| < \frac{\epsilon}{3} \text{ скобка } > 0, \text{ знак меняет } (\Delta z)^3 \\
+&\implies \Delta z \to -\Delta z \implies \text{знак меняется} \implies \text{экстремума нет}
+\end{align*}
+
+\noindent \textbf{В4.}
+\begin{align*}
+&\begin{cases} y_0 = 0 \\ z_0 = 0 \end{cases} \implies 2(0)+3(0)=0 \neq 1 \implies \text{невозможно}
+\end{align*}
+
+\vspace{0.5cm}
+\noindent 8. Ответ:
+\[
+M_0 \left( \frac{1}{7}, \frac{1}{7}, \frac{1}{7} \right) \implies u_{\max} = \frac{1}{7^7} \quad (\text{строгий локальный максимум})
+\]
+\begin{align*}
+y = 0 \implies &\begin{cases} x z (1 - x - 3z) > 0 \implies \text{нестрогий минимум} \\ x z (1 - x - 3z) < 0 \implies \text{нестрогий максимум} \\ x z (1 - x - 3z) = 0 \implies \text{экстремума нет} \end{cases}
+\end{align*}
+\[
+z = 0 \implies \text{экстремумов нет}; \quad x = 0, 2y + 3z = 1 \implies \text{экстремумов нет}
+\]
+
+\end{document}

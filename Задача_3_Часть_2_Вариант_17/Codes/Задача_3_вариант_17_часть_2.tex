@@ -9,7 +9,6 @@
 
 \geometry{a4paper, left=20mm, right=20mm, top=20mm, bottom=20mm}
 
-% Настройка для кода Maple
 \lstset{
     basicstyle=\ttfamily\small,
     keywordstyle=\color{blue},
@@ -26,40 +25,54 @@
 
 \[
 M = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 \le 0,\ x_2 \le 0,\ x_1^3 + x_2^3 \le 1\}, \qquad x_0 = (0, 0).
-\]
+\]\\
 
-\subsection*{1. Ограничения и их активность в $x_0$}
+\noindent 1. Ограничения и их активность в \(x_0\):
 \begin{align*}
 g_1(x_1, x_2) &= x_1 \le 0 &\implies g_1(0, 0) &= 0 \quad (\text{активно}), \\
 g_2(x_1, x_2) &= x_2 \le 0 &\implies g_2(0, 0) &= 0 \quad (\text{активно}), \\
-g_3(x_1, x_2) &= x_1^3 + x_2^3 - 1 \le 0 &\implies g_3(0, 0) &= 0^3 + 0^3 - 1 = -1 < 0 \quad (\text{неактивно}).
+g_3(x_1, x_2) &= x_1^3 + x_2^3 - 1 \le 0 &\implies g_3(0, 0) &= -1 < 0 \quad (\text{неактивно}).
 \end{align*}
+
 \[
 \forall x \in M: \quad x_1 \le 0,\ x_2 \le 0 \implies x_1^3 + x_2^3 \le 0 < 1 \implies I(x_0) = \{1, 2\}.
-\]
+\]\\
 
-\subsection*{2. Градиенты и регулярность}
+\noindent 2. Градиенты и регулярность:
 \begin{align*}
 \nabla g_1(x_0) &= \left. \begin{pmatrix} \dfrac{\partial g_1}{\partial x_1} \\[8pt] \dfrac{\partial g_1}{\partial x_2} \end{pmatrix} \right|_{(0,0)} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \qquad
 \nabla g_2(x_0) = \left. \begin{pmatrix} \dfrac{\partial g_2}{\partial x_1} \\[8pt] \dfrac{\partial g_2}{\partial x_2} \end{pmatrix} \right|_{(0,0)} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
 \end{align*}
+
 \[
 \det \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = 1 \neq 0 \implies \text{условие регулярности выполнено.}
-\]
+\]\\
 
-\subsection*{3. Условие касательного конуса ($\nabla g_i(x_0)^T v \le 0,\ i \in I(x_0)$)}
+\noindent 3. Касательный конус (\(\nabla g_i(x_0)^T v \le 0,\ i \in I(x_0)\)):
 \begin{align*}
-\nabla g_1(0, 0)^T v &= \begin{pmatrix} 1 & 0 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 1 \cdot v_1 + 0 \cdot v_2 = v_1 \le 0, \\[4pt]
-\nabla g_2(0, 0)^T v &= \begin{pmatrix} 0 & 1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0 \cdot v_1 + 1 \cdot v_2 = v_2 \le 0.
+\nabla g_1(0, 0)^T v &= \begin{pmatrix} 1 & 0 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = v_1 \le 0, \\[4pt]
+\nabla g_2(0, 0)^T v &= \begin{pmatrix} 0 & 1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = v_2 \le 0.
 \end{align*}
 
-\subsection*{Ответ}
 \[
-T_{(0,0)}M = \left\{ v = (v_1, v_2) \in \mathbb{R}^2 \;\middle|\; v_1 \le 0,\ v_2 \le 0 \right\}.
+K = T^{cone}_{(0,0)}M = \left\{ v = (v_1, v_2) \in \mathbb{R}^2 \;\middle|\; v_1 \le 0,\ v_2 \le 0 \right\}.
+\]\\
+
+\noindent 4. Касательное пространство (линейная оболочка конуса):
+\[
+T_{(0,0)}M = \text{span}(K) = \left\{ \alpha u + \beta w \mid \alpha, \beta \in \mathbb{R},\ u, w \in K \right\}.
 \]
 
-\end{document}
+\[
+\text{Так как } (-1, 0) \in K \text{ и } (0, -1) \in K, \text{ то } \forall (x, y) \in \mathbb{R}^2:
+\]
+\[
+(x, y) = -x(-1, 0) - y(0, -1) \implies \mathbb{R}^2 \subseteq \text{span}(K).
+\]
 
+\noindent Ответ:
+\[
+T_{(0,0)}M = \mathbb{R}^2.
 \]
 
 \end{document}

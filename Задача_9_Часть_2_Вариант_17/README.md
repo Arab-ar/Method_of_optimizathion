@@ -87,7 +87,7 @@ $$
 
 ![Optimal Trajectory](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_optimal_trajectory.gif)
 
-Точка движется по $\hat{x}_+(t)$ (синяя сплошная) и $\hat{u}_+(t)$ (красная штриховая).
+Точка движется по $\hat{x}\_+(t)$ (синяя линия) и $\hat{u}\_+(t)$ (красная линия).
 Под обеими кривыми закрашивается пройденная площадь, отображаются текущие $t$, $x$, $u$.
 
 ---

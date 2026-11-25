@@ -1,0 +1,195 @@
+\documentclass[12pt,a4paper,fleqn]{article}
+
+%------------------------------------------------
+% Кодировки и шрифты
+%------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb,mathtools}
+
+%------------------------------------------------
+% Оформление, отступы и выравнивание
+%------------------------------------------------
+\usepackage{geometry}
+\geometry{left=20mm,right=20mm,top=20mm,bottom=20mm}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{enumitem}
+\setlist[enumerate,itemize]{leftmargin=*}
+
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\setlength{\mathindent}{0pt}
+
+\allowdisplaybreaks
+
+\begin{document}
+
+\noindent\textbf{\Large Задача 9 (Часть 2) — Вариант 17}\\[0.3cm]
+
+\section*{1. Постановка}
+
+\begin{flalign*}
+& J[x]=\int_0^1 \dot x^2\,dt\to\operatorname{extr}, & \\
+& g(x):=\int_0^1 x^2\,dt-1\ge 0,\qquad x(0)=x(1)=0. &
+\end{flalign*}
+
+\section*{2. Обоснование активного ограничения}
+
+Ограничений на \(\dot x\) нет: \(\dot x\) входит только в \(J\). Ограничение наложено на \(x\) в интегральной форме.
+
+Пусть \(x\) допустима и \(A:=\int_0^1 x^2\,dt>1\). Положим \(y=x/\sqrt A\). Тогда
+\begin{flalign*}
+& \int_0^1 y^2\,dt=\frac1A\int_0^1 x^2\,dt=1,\quad y(0)=y(1)=0, & \\
+& J[y]=\frac1A\int_0^1 \dot x^2\,dt=\frac{J[x]}{A}. &
+\end{flalign*}
+Так как \(A>1\) и \(J[x]>0\) (иначе \(x\equiv0\), что недопустимо), то \(J[y]<J[x]\). \(\Rightarrow\) точка с \(\int_0^1 x^2\,dt>1\) не может быть точкой минимума. \(\Rightarrow\) минимум достигается на границе \(\int_0^1 x^2\,dt=1\).
+
+\section*{3. Необходимые условия (KKT)}
+
+Лагранжиан для \(g(x)\ge0\):
+\begin{flalign*}
+& \mathcal L[x,\mu]=J[x]-\mu g(x)=\int_0^1\bigl(\dot x^2-\mu x^2\bigr)\,dt+\mu,\quad \mu\ge0, & \\
+& \mu\left(\int_0^1 x^2\,dt-1\right)=0. &
+\end{flalign*}
+
+Вариация:
+\begin{flalign*}
+& \delta \mathcal L=2\int_0^1\bigl(\dot x\,\delta\dot x-\mu x\,\delta x\bigr)\,dt=-2\int_0^1\bigl(\ddot x+\mu x\bigr)\delta x\,dt, & \\
+& \delta x(0)=\delta x(1)=0\;\Rightarrow\;\ddot x+\mu x=0. &
+\end{flalign*}
+
+Если \(\int_0^1 x^2\,dt>1\), то \(\mu=0\Rightarrow \ddot x=0,\ x(0)=x(1)=0\Rightarrow x\equiv0\), что противоречит \(\int_0^1 x^2\,dt\ge1\). \(\Rightarrow\)
+\begin{flalign*}
+& \int_0^1 x^2\,dt=1,\qquad \mu>0. &
+\end{flalign*}
+
+\section*{4. Сведение к задаче Лагранжа}
+
+Так как ограничение активно (\(\int_0^1 x^2 dt = 1\)), переходим к задаче с дифференциальной связью. Введём замену \(u = \dot{x}\):
+\begin{flalign*}
+& J = \int_0^1 u^2 dt \to \operatorname{extr}, & \\
+& \dot{x} - u = 0, \quad x(0)=x(1)=0, \quad \int_0^1 x^2 dt = 1. &
+\end{flalign*}
+
+Функция Лагранжа:
+\begin{flalign*}
+& L = \lambda_0 u^2 + p(t)(\dot{x} - u) + \lambda x^2. &
+\end{flalign*}
+Множители: \(\lambda_0, \lambda\) и \(p(t)\).
+
+\section*{5. Необходимые условия}
+
+1. \textbf{Стационарность по \(x\):}
+\begin{flalign*}
+& \frac{d}{dt}L_{\dot{x}} = L_x \;\Rightarrow\; \dot{p} = 2\lambda x. &
+\end{flalign*}
+
+2. \textbf{Стационарность по \(u\):}
+\begin{flalign*}
+& L_u = 0 \;\Rightarrow\; p = 2\lambda_0 u. &
+\end{flalign*}
+
+3. \textbf{Граничные условия:}
+\begin{flalign*}
+& x(0)=0,\qquad x(1)=0. &
+\end{flalign*}
+
+4. \textbf{Согласование знаков:} \(\lambda_0 \ge 0\); \(\lambda\) любого знака.
+
+\section*{6. Исследование нормальности}
+
+\textbf{Случай \(\lambda_0=0\):}
+\begin{flalign*}
+& p\equiv 0 \;\Rightarrow\; \lambda x\equiv 0. &
+\end{flalign*}
+Так как по ограничению \(x\not\equiv 0\), то \(\lambda=0\), и все множители нулевые — невозможно.
+
+\textbf{Случай \(\lambda_0\neq 0\):}
+\begin{flalign*}
+& \lambda_0=1 \;\Rightarrow\; p=2\dot x,\quad \dot p=2\ddot x. &
+\end{flalign*}
+Из \(\dot p=2\lambda x\) получаем
+\begin{flalign*}
+& \ddot x=\lambda x,\qquad x(0)=x(1)=0. &
+\end{flalign*}
+
+\section*{7. Краевая задача}
+
+\begin{flalign*}
+& \ddot x-\lambda x=0,\quad \lambda=-\omega^2 \;\Rightarrow\; \ddot x+\omega^2 x=0, & \\
+& x(t)=A\cos\omega t+B\sin\omega t, & \\
+& x(0)=0 \;\Rightarrow\; A=0 \;\Rightarrow\; x(t)=B\sin\omega t, & \\
+& x(1)=0 \;\Rightarrow\; B\sin\omega=0,\ B\neq0 \;\Rightarrow\; \omega=\pi n,\ n=1,2,\dots &
+\end{flalign*}
+\begin{flalign*}
+& \lambda=-\pi^2 n^2,\qquad x_n(t)=B\sin(\pi n t). &
+\end{flalign*}
+
+\section*{8. Интегральное ограничение}
+
+\begin{flalign*}
+& \int_0^1 x_n^2\,dt=\frac{B^2}{2}=1\;\Rightarrow\;B=\pm\sqrt2, & \\
+& x_n(t)=\pm\sqrt2\sin(\pi n t),\qquad J[x_n]=\int_0^1 \dot x_n^2\,dt=\pi^2 n^2. &
+\end{flalign*}
+\begin{flalign*}
+& \min_n J[x_n]=J[x_1]=\pi^2. &
+\end{flalign*}
+
+\section*{9. Достаточность (Виртингер)}
+
+\(x\in C^1[0,1],\ x(0)=x(1)=0\):
+\begin{flalign*}
+& \int_0^1 x^2\,dt\le\frac{1}{\pi^2}\int_0^1\dot x^2\,dt,\qquad =\,\Leftrightarrow\,x(t)=C\sin(\pi t). &
+\end{flalign*}
+\begin{flalign*}
+& J[x]\ge\pi^2\int_0^1 x^2\,dt\ge\pi^2, & \\
+& J[x]=\pi^2\;\Leftrightarrow\;\int_0^1 x^2\,dt=1\ \wedge\ x=C\sin(\pi t)\;\Rightarrow\;\frac{C^2}{2}=1\;\Rightarrow\;C=\pm\sqrt2. &
+\end{flalign*}
+\begin{flalign*}
+& \hat x_\pm(t)=\pm\sqrt2\sin(\pi t)\ \Rightarrow\ \text{строгий глобальный минимум (две экстремали).} &
+\end{flalign*}
+Глобального максимума нет: \(\alpha\to+\infty\Rightarrow J[\alpha x]=\alpha^2 J[x]\to+\infty\).
+
+\section*{10. Оптимальное управление}
+
+\begin{flalign*}
+& \hat u_\pm(t)=\dot{\hat x}_\pm(t)=\pm\sqrt2\,\pi\cos(\pi t). &
+\end{flalign*}
+Две оптимальные пары:
+\begin{flalign*}
+& \bigl(\hat x_+,\hat u_+\bigr)=\bigl(\sqrt2\sin(\pi t),\ \sqrt2\pi\cos(\pi t)\bigr), & \\
+& \bigl(\hat x_-,\hat u_-\bigr)=\bigl(-\sqrt2\sin(\pi t),\ -\sqrt2\pi\cos(\pi t)\bigr). &
+\end{flalign*}
+\(J[\hat x_+]=J[\hat x_-]=\pi^2\;\Rightarrow\) обе пары оптимальны.
+
+\section*{11. Седловые точки (\(n\ge2\))}
+
+Вариация \(x_\varepsilon=(1+\delta)x_n+\varepsilon\sin(\pi t)\), \(\delta=-\tfrac{\varepsilon^2}{4}+O(\varepsilon^4)\):
+\begin{flalign*}
+& J[x_\varepsilon]=(1+\delta)^2J[x_n]+\varepsilon^2J[\sin(\pi t)]=\pi^2 n^2+\varepsilon^2\pi^2\!\left(1-\tfrac{n^2}{2}\right)+O(\varepsilon^4). &
+\end{flalign*}
+\(n\ge2\Rightarrow 1-\tfrac{n^2}{2}<0\Rightarrow J[x_\varepsilon]<J[x_n]\) при \(\varepsilon\neq0\) малых \(\Rightarrow x_n\) не локальный минимум.
+
+Вариация \(x_\varepsilon=(1+\delta)x_n+\varepsilon\sin(M\pi t)\), \(M>n\):
+\begin{flalign*}
+& J[x_\varepsilon]=\pi^2 n^2+\varepsilon^2\pi^2\!\left(M^2-\tfrac{n^2}{2}\right)+O(\varepsilon^4)>J[x_n]\ \Rightarrow\ x_n \text{ не локальный максимум.} &
+\end{flalign*}
+\(\Rightarrow x_n=\pm\sqrt2\sin(\pi n t),\ n\ge2\) — седловые точки.
+
+\(n=1\): \(\hat x_\pm=\pm\sqrt2\sin(\pi t)\) — строгий глобальный минимум.
+
+\vspace{0.6cm}
+\section*{Ответ}
+
+\begin{flalign*}
+& \hat x_\pm(t)=\pm\sqrt2\sin(\pi t),\qquad \hat u_\pm(t)=\pm\sqrt2\,\pi\cos(\pi t),\qquad J_{\min}=\pi^2. &
+\end{flalign*}
+
+Обе пары \((\hat x_\pm,\hat u_\pm)\) дают \(J_{\min}=\pi^2\) \(\Rightarrow\) обе оптимальны (два равноправных решения). Глобального максимума нет; \(x_n,\ n\ge2\) — седловые точки.
+
+\end{document}

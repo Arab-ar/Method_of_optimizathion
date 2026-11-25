@@ -3,7 +3,7 @@
 **Условие задачи:**
 
 $$
-\int_0^{T_0}\\bigl(x^2+\dot x^2-4x\sin t\bigr)\,dt - 2x(T_0)+2x^2(0)-x^2(T_0)\to\text{extr}
+\int_0^{T_0}\\bigl(x^2+\dot x^2-4x\sin t\bigr)\dt - 2x(T_0)+2x^2(0)-x^2(T_0)\to\text{extr}
 $$
 
 ## 📄 Документы

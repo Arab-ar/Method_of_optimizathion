@@ -73,21 +73,20 @@ $$
 
 ---
 
-## 3. Анимации и визуализация
+## 3. Визуализация
 
-Все файлы лежат в папке `images/`. 
 
-### Анимация 1: Оптимальная траектория и управление
+**Анимация 1: Оптимальная траектория и управление**
 **Имя файла:** `anim_optimal_trajectory.gif`
 ![Optimal Trajectory](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_optimal_trajectory.gif)
 *Точка движется по $$\(\hat{x}_+(t)\)$$ (синяя линия) и $$\(\hat{u}_+(t)\)$$ (красная линия).*
 
-### Анимация 2: Вариация седловой точки (n=2)
+**Анимация 2: Вариация седловой точки (n=2)**
 **Имя файла:** `anim_saddle_variation.gif`
 ![Saddle Variation](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_saddle_variation.gif)
 *При изменении $$\(\varepsilon\)$$ функционал $$\(J\)$$ сначала падает, затем растет $$\(\Rightarrow\)$$ точка $$\(\varepsilon=0\)$$ является седлом.*
 
-### Анимация 3: Поверхность функционала \(J(\varepsilon)\)
+**Анимация 3: Поверхность функционала $J(\varepsilon)$**
 **Имя файла:** `anim_functional_surface.gif`
 ![Functional Surface](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_functional_surface.gif)
 *3D-визуализация окрестности седловой точки $$\(n=2\)$$.*

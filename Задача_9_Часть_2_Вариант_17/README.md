@@ -95,7 +95,7 @@ $$
 
 ![Optimal Trajectory](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_optimal_trajectory.gif)
 
-Точка движется по $\hat{x}^{_+}(t)$ (синяя линия) и $\hat{u}^{+}(t)$ (красная линия).
+Точка движется по $\hat{x}\_+(t)$ (синяя линия) и $\hat{u}\_+(t)$ (красная линия).
 
 ### Анимация 2. Вариация седловой точки ($n = 2$)
 

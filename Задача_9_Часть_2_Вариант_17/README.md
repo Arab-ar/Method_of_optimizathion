@@ -24,7 +24,7 @@ $$\int_0^1 x^2 dt \ge 1, \quad x(0) = x(1) = 0.$$
 
 **Ответ.**
 Две оптимальные пары (отличаются знаком):
-$$\hat{x}_\pm(t) = \pm\sqrt{2}\sin(\pi t),$$ $$\quad \hat{u}_\pm(t) = \pm\sqrt{2}\pi\cos(\pi t), \quad J_{\min} = \pi^2.$$
+$\hat{x}_\pm(t)$ = \pm\sqrt{2}\sin(\pi t),$$ $$\quad \hat{u}_\pm(t) = \pm\sqrt{2}\pi\cos(\pi t), \quad J_{\min} = \pi^2.$$
 Обе пары дают строгий глобальный минимум. Функции при $$\(n \ge 2\)$$ являются седловыми точками.
 
 ---

@@ -81,7 +81,7 @@ $$
 
 ![Optimal Trajectory](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_optimal_trajectory.gif)
 
-*Точка движется по $\hat{x}_+(t)$ (синяя линия) и $\hat{u}_+(t)$ (красная линия).*
+*Точка движется по* $\hat{x}_+(t)$ *(синяя линия) и* $\hat{u}_+(t)$ *(красная линия).*
 
 ### Анимация 2. Вариация седловой точки ($n = 2$)
 
@@ -89,8 +89,7 @@ $$
 
 ![Saddle Variation](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_saddle_variation.gif)
 
-*При изменении $\varepsilon$ функционал $J$ сначала падает, затем растёт
-$\Rightarrow$ точка $\varepsilon = 0$ является седлом.*
+*При изменении* $\varepsilon$ *функционал* $J$ *сначала падает, затем растёт:* $\varepsilon = 0$ *— седловая точка.*
 
 ### Анимация 3. Поверхность функционала $J(\varepsilon)$
 
@@ -98,7 +97,7 @@ $\Rightarrow$ точка $\varepsilon = 0$ является седлом.*
 
 ![Functional Surface](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_functional_surface.gif)
 
-*3D-визуализация окрестности седловой точки $n = 2$.*
+*3D-визуализация окрестности седловой точки* $n = 2$.
 
 ---
 

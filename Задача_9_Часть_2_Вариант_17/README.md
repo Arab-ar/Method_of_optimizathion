@@ -76,6 +76,9 @@ $$
 
 ## > 4. Maple-код для генерации анимаций
 
+<details>
+<summary>Нажмите, чтобы раскрыть Maple-код</summary>
+
 ```maple
 restart;
 with(plots):

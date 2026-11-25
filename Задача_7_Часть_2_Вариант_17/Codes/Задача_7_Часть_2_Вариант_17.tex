@@ -1,0 +1,243 @@
+\documentclass[12pt,a4paper,fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{left=20mm,right=20mm,top=20mm,bottom=20mm}
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+\begin{document}
+
+\noindent\textbf{\Large Задача 7}\\[0.4cm]
+
+\[
+\int_0^{T_0}\!\bigl(x^2+\dot x^2-4x\sin t\bigr)dt - 2x(T_0)+2x^2(0)-x^2(T_0)\to\operatorname{extr}
+\]
+\[
+L = x^2+\dot x^2-4x\sin t
+\]
+\[
+L_x = 2x-4\sin t
+\]
+\[
+L_{\dot x} = 2\dot x,\qquad \frac{d}{dt}(2\dot x)=2\ddot x
+\]
+
+\bigskip
+\textbf{Ур-ие Эйлера–Лагранжа:}
+\[
+-\frac{d}{dt}L_{\dot x}+L_x=0
+\]
+\[
+-2\ddot x+2x-4\sin t=0
+\]
+\[
+\ddot x-x=-2\sin t
+\]
+
+Характеристическое: $\lambda^2-1=0\;\Rightarrow\;\lambda_{1,2}=\pm 1$
+\[
+x_{\text{о.о.}}=C_1 e^t+C_2 e^{-t}
+\]
+
+Частное неоднородного: $x_{\text{ч.н.}}=a\sin t+b\cos t$
+\[
+\dot x_{\text{ч.н.}}=a\cos t-b\sin t
+\]
+\[
+\ddot x_{\text{ч.н.}}=-a\sin t-b\cos t
+\]
+
+Подставляем:
+\[
+-a\sin t-b\cos t-a\sin t-b\cos t=-2\sin t
+\]
+\[
+-2a=-2,\quad -2b=0\;\Rightarrow\;a=1,\;b=0
+\]
+\[
+x_{\text{ч.н.}}=\sin t
+\]
+\[
+x(t)=C_1 e^t+C_2 e^{-t}+\sin t,\qquad \dot x(t)=C_1 e^t-C_2 e^{-t}+\cos t
+\]
+\newpage
+\bigskip
+\textbf{Условия трансверсальности.\\} 
+\vspace{0.5 cm}
+Граничный функционал: $\Phi=2x^2(0)-2x(T_0)-x^2(T_0)$\\
+\vspace{0.5 cm}
+\textit{Левый конец} ($x(0)$ свободно):
+\[
+-L_{\dot x}(0)+\Phi_{x(0)}=0\;\Rightarrow\;-2\dot x(0)+4x(0)=0\;\Rightarrow\;\dot x(0)=2x(0)
+\]
+
+\textit{Правый конец} ($x(T_0)$ свободно):
+\[
+L_{\dot x}(T_0)+\Phi_{x(T_0)}=0\;\Rightarrow\;2\dot x(T_0)-2-2x(T_0)=0\;\Rightarrow\;\dot x(T_0)=1+x(T_0)
+\]
+
+\bigskip
+\textbf{Нахождение констант.\\}
+\vspace{0.5 cm}
+Из $\dot x(0)=2x(0)$:
+\[
+C_1-C_2+1=2(C_1+C_2)\;\Rightarrow\;C_1=1-3C_2
+\]
+
+Из $\dot x(T_0)=1+x(T_0)$:
+\[
+C_1 e^{T_0}-C_2 e^{-T_0}+\cos T_0=1+C_1 e^{T_0}+C_2 e^{-T_0}+\sin T_0
+\]
+
+\[
+-2C_2 e^{-T_0}=1+\sin T_0-\cos T_0\;\Rightarrow\;C_2=-\frac{e^{T_0}}{2}(1+\sin T_0-\cos T_0)
+\]
+
+\[
+C_1=1+\frac{3e^{T_0}}{2}(1+\sin T_0-\cos T_0)
+\]
+
+\[
+\hat x(t)=\left[1+\frac{3e^{T_0}}{2}(1+\sin T_0-\cos T_0)\right]e^t-\frac{e^{T_0}}{2}(1+\sin T_0-\cos T_0)e^{-t}+\sin t
+\]
+\newpage
+\bigskip
+\textbf{Условие Лежандра:}
+
+\[
+L_{\dot x\dot x}=2>0\quad\forall\,t\in[0,T_0]
+\]
+
+$\Rightarrow$ усиленное условие Лежандра выполнено.\\
+\vspace{0.7 cm}
+\bigskip
+\textbf{③ Уравнение Якоби:}
+
+\[
+-\frac{d}{dt}\bigl(L_{\dot x\dot x}\dot h+L_{x\dot x}h\bigr)+L_{x\dot x}\dot h+L_{xx}h=0
+\]
+\[
+L_{x\dot x}=0,\quad L_{xx}=2,\quad L_{\dot x\dot x}=2
+\]
+
+\[
+\Rightarrow\;-\frac{d}{dt}(2\dot h)+2h=0\;\Rightarrow\;\ddot h-h=0
+\]
+\[
+h(t)=A e^t+B e^{-t}
+\]
+
+\[
+h(0)=0,\;\dot h(0)=1\;\Rightarrow\;A+B=0,\;A-B=1\;\Rightarrow\;A=\tfrac12,\;B=-\tfrac12
+\]
+
+\[
+h(t)=\frac{e^t-e^{-t}}{2}=\sinh t
+\]
+
+Нули $h(t)$:
+\[
+\sinh t=0\;\Leftrightarrow\;e^t=e^{-t}\;\Leftrightarrow\;e^{2t}=1\;\Leftrightarrow\;t=0
+\]
+
+\[
+\Rightarrow\;\text{единственный нуль }t=0\text{ лежит вне }(0,T_0]
+\]
+
+\[
+\Rightarrow\;\text{сопряжённых с }t_0=0\text{ точек на }(0,T_0]\text{ нет при любом }T_0>0
+\]
+
+$\Rightarrow$ усиленное условие Якоби выполнено $\Rightarrow$ $\hat x\in wlocmin$.
+
+\newpage
+
+\bigskip
+\textbf{Условие Вейерштрасса:}
+
+\[
+\mathcal{E}(t,x,\dot x,u)=L(t,x,u)-L(t,x,\dot x)-L_{\dot x}(t,x,\dot x)(u-\dot x)
+\]
+
+\[
+=\bigl(x^2+u^2-4x\sin t\bigr)-\bigl(x^2+\dot x^2-4x\sin t\bigr)-2\dot x(u-\dot x)
+\]
+
+\[
+=u^2-\dot x^2-2\dot x u+2\dot x^2
+\]
+
+\[
+=u^2-2\dot x u+\dot x^2=(u-\dot x)^2
+\]
+
+\[
+\mathcal{E}(t,x,\dot x,u)=(u-\dot x)^2\geq 0\quad\forall\,u\in\mathbb{R},\;\forall\,t\in[0,T_0]
+\]
+
+\[
+\mathcal{E}=0\;\Leftrightarrow\;u=\dot x\;\Rightarrow\;\text{усиленное условие Вейерштрасса выполнено}
+\]
+
+$\Rightarrow$ $\hat x\in slocmin$.
+\newpage
+\bigskip
+\textbf{Глобальность минимума.\\}
+\vspace{0.5 cm}
+Вторая вариация:
+\[
+\delta^2 J[h]=\int_0^{T_0}(h^2+\dot h^2)\,dt+2h^2(0)-h^2(T_0)
+\]
+
+Оценим $h^2(T_0)$:
+\[
+h^2(T_0)-h^2(0)=\int_0^{T_0}\frac{d}{dt}(h^2)\,dt=2\int_0^{T_0}h\dot h\,dt
+\]
+
+По неравенству $2ab\leq a^2+b^2$ при $a=h$, $b=\dot h$:
+\[
+2\int_0^{T_0}h\dot h\,dt\leq\int_0^{T_0}(h^2+\dot h^2)\,dt
+\]
+
+\[
+\Rightarrow\;h^2(T_0)\leq h^2(0)+\int_0^{T_0}(h^2+\dot h^2)\,dt
+\]
+
+Подставляем в $\delta^2 J$:
+\[
+\delta^2 J[h]\geq\int_0^{T_0}(h^2+\dot h^2)\,dt+2h^2(0)-h^2(0)-\int_0^{T_0}(h^2+\dot h^2)\,dt=h^2(0)\geq 0
+\]
+
+$\delta^2 J[h]=0$:
+\[
+\begin{cases}
+h(0)=0,\\
+2h\dot h=h^2+\dot h^2\;\text{п.в.}\;\Rightarrow\;h=\dot h\;\text{или}\;h=-\dot h
+\end{cases}
+\;\Rightarrow\;h(t)=Ce^{\pm t},\;C=0\;\Rightarrow\;h\equiv 0
+\]
+
+\[
+\Rightarrow\;\delta^2 J[h]>0\;\forall\,h\not\equiv 0\;\Rightarrow\;\text{вторая вариация положительно определена}
+\]
+
+Так как $J$ квадратичен и $\hat x$ — экстремаль ($\delta J=0$):
+\[
+J[\hat x+h]=J[\hat x]+\tfrac12\delta^2 J[h]>J[\hat x]\quad\forall\,h\not\equiv 0
+\]
+
+$\Rightarrow$ $\hat x$ — строгий глобальный минимум.
+
+\bigskip
+\textbf{Ответ:}
+\[
+\hat x(t)=\left[1+\frac{3e^{T_0}}{2}(1+\sin T_0-\cos T_0)\right]e^t-\frac{e^{T_0}}{2}(1+\sin T_0-\cos T_0)e^{-t}+\sin t
+\]
+
+$\hat x\in slocmin$, $\hat x$ — строгий глобальный минимум.
+
+\end{document}

@@ -148,7 +148,7 @@ $J(\tau) = \int_0^\tau \dot{x}^2\,dt$ стремится к $\pi^2 \approx 9.87$
 
 ![Extremal Family](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_extremal_family.gif)
 
-Поочерёдно подсвечиваются кривые $n=1,\dots,5$ с подписями $J_n = n^2\pi^2$.
+$J_n = n^2\pi^2$.
 Видно: $J$ растёт как $n^2$; глобальный минимум — при $n=1$.
 При $n \ge 2$ — седловые точки.
 

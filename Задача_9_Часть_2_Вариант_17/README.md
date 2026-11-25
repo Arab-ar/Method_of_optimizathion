@@ -152,7 +152,7 @@ $J(\tau) = \int_0^\tau \dot{x}^2\,dt$ стремится к $\pi^2 \approx 9.87$
 
 ---
 
-## 4. Maple-код для генерации анимаций
+## 4. Maple-код
 
 <details>
 <summary>Нажмите, чтобы раскрыть полный Maple-код</summary>

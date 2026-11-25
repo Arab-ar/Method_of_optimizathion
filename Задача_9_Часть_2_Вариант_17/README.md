@@ -6,11 +6,19 @@
 
 Найти экстремум функционала:
 
-$$J[x] = \int_0^1 \dot{x}^2 dt \to \text{extr},$$
+
+$$
+J[x] = \int_0^1 \dot{x}^2\,dt \to \text{extr},
+$$
+
 
 при ограничении:
 
-$$\int_0^1 x^2 dt \ge 1, \quad x(0) = x(1) = 0.$$
+
+$$
+\int_0^1 x^2\,dt \ge 1, \qquad x(0) = x(1) = 0.
+$$
+
 
 ## 2. Аналитическое решение
 
@@ -29,23 +37,29 @@ $\int_0^1 x^2\,dt = 1$.
 
 Лагранжиан:
 
+
 $$
 \mathcal{L} = \int_0^1 \left(\dot{x}^2 - \mu x^2\right) dt + \mu, \qquad \mu \ge 0.
 $$
 
+
 Уравнение Эйлера–Лагранжа:
+
 
 $$
 \ddot{x} + \mu x = 0, \qquad x(0) = x(1) = 0.
 $$
 
+
 ### Решение краевой задачи
 
 При $\mu = \omega^2 > 0$ решение имеет вид
 
+
 $$
 x(t) = B\sin(\omega t).
 $$
+
 
 Из условия $x(1) = 0$ получаем $\omega = \pi n$, где $n = 1, 2, \dots$
 
@@ -53,16 +67,23 @@ $$
 
 **Ответ.** Две оптимальные пары (отличаются знаком):
 
+
 $$
-\hat{x}_\pm(t) = \pm \sqrt{2} \sin(\pi t), \quad \hat{u}_\pm(t) = \pm \sqrt{2} \pi \cos(\pi t),
+\hat{x}_\pm(t) = \pm \sqrt{2} \sin(\pi t), \quad \hat{u}_\pm(t) = \pm \sqrt{2} \pi \cos(\pi t).
 $$
+
+
+Соответствующие значения функционала:
+
 
 $$
 J_{\min} = \pi^2.
 $$
 
-Обе пары дают строгий глобальный минимум. При $n \geq 2$ соответствующие функции являются седловыми точками.
 
+Обе пары дают строгий глобальный минимум.
+
+При $n \geq 2$ соответствующие функции являются седловыми точками.
 
 ---
 
@@ -70,7 +91,7 @@ $$
 
 ### Анимация 1. Оптимальная траектория и управление
 
-Файл: `anim_optimal_trajectory.gif`
+**Файл:** `anim_optimal_trajectory.gif`
 
 ![Optimal Trajectory](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_optimal_trajectory.gif)
 
@@ -78,7 +99,7 @@ $$
 
 ### Анимация 2. Вариация седловой точки ($n = 2$)
 
-Файл: `anim_saddle_variation.gif`
+**Файл:** `anim_saddle_variation.gif`
 
 ![Saddle Variation](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_saddle_variation.gif)
 
@@ -86,12 +107,11 @@ $$
 
 ### Анимация 3. Поверхность функционала $J(\varepsilon)$
 
-Файл: `anim_functional_surface.gif`
+**Файл:** `anim_functional_surface.gif`
 
 ![Functional Surface](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_functional_surface.gif)
 
 3D-визуализация окрестности седловой точки $n = 2$.
-
 
 ---
 
@@ -159,5 +179,7 @@ plot3d(
     title="Функционал J(eps) в окрестности n=2",
     style=surface, color=J_pert(eps)
 );
-# Для экспорта анимации 3D можно использовать plots:-animate с параметром theta.
+# Для экспорта анимации 3D: plots:-animate(plot3d(J_pert(eps), eps=-0.9..0.9, theta=a..a+0.3), a=0..(2*Pi-0.3), frames=60);
+```
+
 </details>

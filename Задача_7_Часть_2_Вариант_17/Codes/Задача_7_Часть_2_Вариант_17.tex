@@ -11,17 +11,20 @@
 
 \begin{document}
 
-\noindent\textbf{\Large Задача 7}\\[0.4cm]
+\noindent\textbf{\Large Задача 7 (Задача Больца)}\\[0.4cm]
 
 \[
-\int_0^{T_0}\!\bigl(x^2+\dot x^2-4x\sin t\bigr)dt - 2x(T_0)+2x^2(0)-x^2(T_0)\to\operatorname{extr}
+\mathcal{B}(x(\cdot))=\int_0^{T_0}\!\bigl(x^2+\dot x^2-4x\sin t\bigr)dt + l(x(0),x(T_0))\to\operatorname{extr}
 \]
+
 \[
-L = x^2+\dot x^2-4x\sin t
+L = x^2+\dot x^2-4x\sin t, \qquad l(x_0,x_1)=2x_0^2-2x_1-x_1^2
 \]
+
 \[
 L_x = 2x-4\sin t
 \]
+
 \[
 L_{\dot x} = 2\dot x,\qquad \frac{d}{dt}(2\dot x)=2\ddot x
 \]
@@ -66,22 +69,26 @@ x(t)=C_1 e^t+C_2 e^{-t}+\sin t,\qquad \dot x(t)=C_1 e^t-C_2 e^{-t}+\cos t
 \]
 \newpage
 \bigskip
-\textbf{Условия трансверсальности.\\} 
+\textbf{Условия трансверсальности.}\\
 \vspace{0.5 cm}
-Граничный функционал: $\Phi=2x^2(0)-2x(T_0)-x^2(T_0)$\\
+Терминант: $l(x_0,x_1)=2x_0^2-2x_1-x_1^2$\\
 \vspace{0.5 cm}
-\textit{Левый конец} ($x(0)$ свободно):
 \[
--L_{\dot x}(0)+\Phi_{x(0)}=0\;\Rightarrow\;-2\dot x(0)+4x(0)=0\;\Rightarrow\;\dot x(0)=2x(0)
+l_{x_0}=4x_0,\qquad l_{x_1}=-2-2x_1
 \]
 
-\textit{Правый конец} ($x(T_0)$ свободно):
+\textit{Левый конец} ($t_0=0$):
 \[
-L_{\dot x}(T_0)+\Phi_{x(T_0)}=0\;\Rightarrow\;2\dot x(T_0)-2-2x(T_0)=0\;\Rightarrow\;\dot x(T_0)=1+x(T_0)
+L_{\dot x}(0)=l_{x_0}\;\Rightarrow\;2\dot x(0)=4x(0)\;\Rightarrow\;\dot x(0)=2x(0)
+\]
+
+\textit{Правый конец} ($t_1=T_0$):
+\[
+L_{\dot x}(T_0)=-l_{x_1}\;\Rightarrow\;2\dot x(T_0)=-(-2-2x(T_0))\;\Rightarrow\;\dot x(T_0)=1+x(T_0)
 \]
 
 \bigskip
-\textbf{Нахождение констант.\\}
+\textbf{Нахождение констант.}\\
 \vspace{0.5 cm}
 Из $\dot x(0)=2x(0)$:
 \[
@@ -186,11 +193,11 @@ $\Rightarrow$ усиленное условие Якоби выполнено $\
 $\Rightarrow$ $\hat x\in slocmin$.
 \newpage
 \bigskip
-\textbf{Глобальность минимума.\\}
+\textbf{Глобальность минимума (через вторую вариацию).}\\
 \vspace{0.5 cm}
 Вторая вариация:
 \[
-\delta^2 J[h]=\int_0^{T_0}(h^2+\dot h^2)\,dt+2h^2(0)-h^2(T_0)
+\delta^2 \mathcal{B}[h]=\int_0^{T_0}(h^2+\dot h^2)\,dt+2h^2(0)-h^2(T_0)
 \]
 
 Оценим $h^2(T_0)$:
@@ -207,12 +214,12 @@ h^2(T_0)-h^2(0)=\int_0^{T_0}\frac{d}{dt}(h^2)\,dt=2\int_0^{T_0}h\dot h\,dt
 \Rightarrow\;h^2(T_0)\leq h^2(0)+\int_0^{T_0}(h^2+\dot h^2)\,dt
 \]
 
-Подставляем в $\delta^2 J$:
+Подставляем в $\delta^2 \mathcal{B}$:
 \[
-\delta^2 J[h]\geq\int_0^{T_0}(h^2+\dot h^2)\,dt+2h^2(0)-h^2(0)-\int_0^{T_0}(h^2+\dot h^2)\,dt=h^2(0)\geq 0
+\delta^2 \mathcal{B}[h]\geq\int_0^{T_0}(h^2+\dot h^2)\,dt+2h^2(0)-h^2(0)-\int_0^{T_0}(h^2+\dot h^2)\,dt=h^2(0)\geq 0
 \]
 
-$\delta^2 J[h]=0$:
+$\delta^2 \mathcal{B}[h]=0$:
 \[
 \begin{cases}
 h(0)=0,\\
@@ -222,12 +229,12 @@ h(0)=0,\\
 \]
 
 \[
-\Rightarrow\;\delta^2 J[h]>0\;\forall\,h\not\equiv 0\;\Rightarrow\;\text{вторая вариация положительно определена}
+\Rightarrow\;\delta^2 \mathcal{B}[h]>0\;\forall\,h\not\equiv 0\;\Rightarrow\;\text{вторая вариация положительно определена}
 \]
 
-Так как $J$ квадратичен и $\hat x$ — экстремаль ($\delta J=0$):
+Так как $\mathcal{B}$ квадратичен и $\hat x$ — экстремаль ($\delta \mathcal{B}=0$):
 \[
-J[\hat x+h]=J[\hat x]+\tfrac12\delta^2 J[h]>J[\hat x]\quad\forall\,h\not\equiv 0
+\mathcal{B}[\hat x+h]=\mathcal{B}[\hat x]+\tfrac12\delta^2 \mathcal{B}[h]>\mathcal{B}[\hat x]\quad\forall\,h\not\equiv 0
 \]
 
 $\Rightarrow$ $\hat x$ — строгий глобальный минимум.

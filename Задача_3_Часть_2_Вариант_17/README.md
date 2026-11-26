@@ -26,7 +26,7 @@ $$K_M(p) = \{v \in \mathbb{R}^n \mid \exists\, \alpha: [0,\varepsilon) \to M,\ \
 
 **Касательное пространство** к $M$ в точке $p$ — это **линейная оболочка** касательного конуса:
 
-$$T_p M = \text{span}\, K_M(p) = \Bigl\{\sum_{i=1}^k \lambda_i v_i \;\Big|\; k \in \mathbb{N},\ \lambda_i \in \mathbb{R},\ v_i \in K_M(p)\Bigr\}.$$
+$$T_p M = \text{span}\, K_M(p) = \left\{\sum_{i=1}^k \lambda_i v_i \;\middle|\; k \in \mathbb{N},\ \lambda_i \in \mathbb{R},\ v_i \in K_M(p)\right\}.$$
 
 Это наименьшее линейное подпространство $\mathbb{R}^n$, содержащее все касательные направления.
 

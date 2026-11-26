@@ -22,11 +22,11 @@ $$\alpha: [0, \varepsilon) \to M, \quad \alpha(0) = p.$$
 
 **Касательный конус** $K_M(p)$ — множество всех возможных векторов скорости $\alpha'(0)$ по всем кривым $\alpha: [0, \varepsilon) \to M$ с $\alpha(0) = p$:
 
-$$K_M(p) = \bigl\{ v \in \mathbb{R}^n \;\big|\; \exists\, \alpha: [0,\varepsilon) \to M,\ \alpha(0) = p,\ \alpha'(0) = v \bigr\}.$$
+$$K_M(p) = \{v \in \mathbb{R}^n \mid \exists\, \alpha: [0,\varepsilon) \to M,\ \alpha(0) = p,\ \alpha'(0) = v\}.$$
 
 **Касательное пространство** к $M$ в точке $p$ — это **линейная оболочка** касательного конуса:
 
-$$T_p M = \text{span}\, K_M(p) = \biggl\{ \sum_{i=1}^k \lambda_i v_i \;\bigg|\; k \in \mathbb{N},\ \lambda_i \in \mathbb{R},\ v_i \in K_M(p) \biggr\}.$$
+$$T_p M = \text{span}\, K_M(p) = \left\{\sum_{i=1}^k \lambda_i v_i \;\middle|\; k \in \mathbb{N},\ \lambda_i \in \mathbb{R},\ v_i \in K_M(p)\right\}.$$
 
 Это наименьшее линейное подпространство $\mathbb{R}^n$, содержащее все касательные направления.
 

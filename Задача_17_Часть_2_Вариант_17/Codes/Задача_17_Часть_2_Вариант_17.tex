@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amssymb, amsthm, mathrsfs}
+\usepackage{geometry}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+\begin{document}
+
+\section*{Задача 17}
+\textbf{Условие:} 
+\[
+T \to \inf, \quad -2 \le \ddot{x} \le 1, \quad x(0) = 1, \quad \dot{x}(0) = -2, \quad \dot{x}(T) = 1, \quad x(T) = 0.
+\]
+
+\subsection*{1. Приведение к виду задачи оптимального управления}
+\[
+x_1 = x, \; x_2 = \dot{x}, \; u = \ddot{x} \implies
+\]
+\[
+T \to \inf; \quad \dot{x}_1 = x_2, \quad \dot{x}_2 = u, \quad u \in [-2, 1],
+\]
+\[
+x_1(0) = 1, \quad x_2(0) = -2, \quad x_1(T) = 0, \quad x_2(T) = 1.
+\]
+
+\subsection*{2. Функция Лагранжа}
+\[
+\mathscr{L} = \int_0^T \big(p_1(\dot{x}_1 - x_2) + p_2(\dot{x}_2 - u)\big) dt + \lambda_0 T + \lambda_1(x_1(0) - 1) + \lambda_2(x_2(0) + 2) + \lambda_3 x_1(T) + \lambda_4(x_2(T) - 1).
+\]
+
+\subsection*{3. Необходимые условия}
+\textbf{а) Уравнения Эйлера:}
+\begin{align*}
+-\frac{d}{dt} \hat{L}_{\dot{x}_i} + \hat{L}_{x_i} = 0, \quad i = 1,2 &\implies \dot{p}_1 = 0, \quad \dot{p}_2 = -p_1 \\
+&\implies p_1(t) = C_1, \quad p_2(t) = C_2 - C_1 t.
+\end{align*}
+
+\textbf{б) Условия трансверсальности:}
+\[
+p_1(0) = \lambda_1, \quad p_2(0) = \lambda_2, \quad p_1(T) = -\lambda_3, \quad p_2(T) = -\lambda_4.
+\]
+
+\textbf{в) Оптимальность по \(u\):}
+\[
+\min_{u \in [-2, 1]} (-p_2(t)u) = -p_2(t)\hat{u}(t) \implies \hat{u}(t) = \begin{cases} 1, & p_2(t) > 0, \\ -2, & p_2(t) < 0. \end{cases}
+\]
+
+\textbf{г) Стационарность по \(T\) и нормировка \(\lambda_0\):}
+\begin{align*}
+\mathscr{L}_T = 0 &\implies \lambda_0 + \lambda_3 \dot{x}_1(T) + \lambda_4 \dot{x}_2(T) = 0 \\
+&\implies \lambda_0 - p_1(T)x_2(T) - p_2(T)\hat{u}(T) = 0 \\
+x_2(T) = 1 &\implies \lambda_0 = p_1(T) + p_2(T)\hat{u}(T).
+\end{align*}
+
+\textit{\(\lambda_0 \neq 0\):} 
+Пусть \(\lambda_0 = 0 \implies p_1(T) = -p_2(T)\hat{u}(T)\).
+\begin{itemize}
+    \item Если \(p_2(T) > 0 \implies \hat{u}(T) = 1 \implies p_1(T) = -p_2(T) \implies p_2(t) = C(t - T + 1)\). \\
+    
+    Корень \(p_2(t)\): \(\tau = T - 1\). При \(\tau \notin (0,T) \implies \hat{u} \equiv 1\). \\
+    
+    Тогда изменение скорости \(\Delta x_2 = x_2(T) - x_2(0) = 3\). \\
+    
+    Т.к. \(\hat{u}=1 \implies \Delta x_2 = T \implies T = 3 \implies \tau = 2\). \\
+    
+    Вычислим \(x_1(T)\) на интервалах \([0,2]\) (\(u=-2\)) и \([2,3]\) (\(u=1\)):
+    \begin{align*}
+    x_1(T) &= x_1(0) + x_2(0)T + \int_0^2 (T-t)(-2)dt + \int_2^3 (T-t)(1)dt \\
+    &= 1 - 2\cdot 3 + \left[-6t + t^2\right]_0^2 + \left[3t - \frac{t^2}{2}\right]_2^3 \\
+    &= 1 - 6 - 8 + 0.5 = -12.5 \neq 0 \text{ (противоречие)}.
+    \end{align*}
+    \item Если \(p_2(T) < 0 \implies \hat{u}(T) = -2 \implies p_1(T) = 2p_2(T) \implies p_2(t) = C(t - T - 1/2)\). \\
+    
+    На \([0,T]\) функция \(p_2(t) < 0 \implies \hat{u} \equiv -2 \implies \dot{x}_2 < 0 \implies x_2(T) < x_2(0)\) (противоречие).
+\end{itemize}
+\[
+\implies \lambda_0 \neq 0 \implies \text{полагаем } \lambda_0 = 1.
+\]
+
+\subsection*{4. Выбор структуры управления}
+\(p_2(t)\) — линейна \(\implies\) не более одного корня \(\implies\) не более одного переключения.
+\[
+x_2(0) = -2 < x_2(T) = 1 \implies \Delta x_2 > 0.
+\]
+\[
+u^+: \{-2 \to 1\} \implies \dot{x}_2(0) = -2 \implies x_2 \downarrow \implies x_2(T) < -2 \text{ (недостижимо)}.
+\]
+\[
+u^-: \{1 \to -2\} \implies \dot{x}_2(0) = 1 \implies x_2 \uparrow \text{ (достижимо)}.
+\]
+\[
+\implies u^-(t) = \begin{cases} 1, & 0 \le t < \tau \\ -2, & \tau \le t \le T \end{cases}.
+\]
+
+\subsection*{5. Фазовые траектории и линия переключения}
+\begin{align*}
+\hat{u}=1: \quad \dot{x}_2 = 1 &\implies x_2 = t + C_1 \implies x_1 = \frac{x_2^2}{2} + C \quad (\dot{x}_2 > 0). \\
+\hat{u}=-2: \quad \dot{x}_2 = -2 &\implies x_2 = -2t + C_1 \implies x_1 = -\frac{x_2^2}{4} + C \quad (\dot{x}_2 < 0).
+\end{align*}
+Условие попадания в \((0,1)\):
+\[
+\begin{cases} 
+u=1: \quad 0 = \frac{1^2}{2} + C \implies C = -\frac{1}{2} \\ 
+u=-2: \quad 0 = -\frac{1^2}{4} + C \implies C = \frac{1}{4} 
+\end{cases}
+\implies \Gamma: x_1 = \begin{cases} 
+-\frac{x_2^2}{4} + \frac{1}{4}, & x_2 \ge 1 \\ 
+\frac{x_2^2}{2} - \frac{1}{2}, & x_2 \le 1 
+\end{cases}
+\]
+
+\subsection*{6. Траектория из \((1, -2)\)}
+
+\(u=1\):
+\[
+(x_1, x_2) = (1, -2) \implies 1 = \frac{(-2)^2}{2} + C \implies C = -1 \implies x_1 = \frac{x_2^2}{2} - 1.
+\]
+Точка переключения (пересечение с \(\Gamma_{x_2 \ge 1}\)):
+\begin{align*}
+\frac{x_2^2}{2} - 1 &= -\frac{x_2^2}{4} + \frac{1}{4} \implies \frac{3}{4}x_2^2 = \frac{5}{4} \implies x_2(\tau) = \sqrt{\frac{5}{3}}. \\
+x_1(\tau) &= \frac{1}{2}\left(\frac{5}{3}\right) - 1 = -\frac{1}{6} \implies M_\tau \left( -\frac{1}{6}, \sqrt{\frac{5}{3}} \right).
+\end{align*}
+
+\subsection*{7. Вычисление времени}
+\begin{align*}
+t \in [0, \tau]: \quad x_2(t) &= -2 + t \implies \sqrt{\frac{5}{3}} = -2 + \tau \implies \tau = 2 + \sqrt{\frac{5}{3}}. \\
+t \in [\tau, T]: \quad x_2(t) &= \sqrt{\frac{5}{3}} - 2(t - \tau) \implies 1 = \sqrt{\frac{5}{3}} - 2(T - \tau) \\
+&\implies T - \tau = \frac{\sqrt{5/3} - 1}{2}. \\
+T &= \tau + (T - \tau) = 2 + \sqrt{\frac{5}{3}} + \frac{\sqrt{5/3} - 1}{2} = \frac{3}{2}\left(1 + \sqrt{\frac{5}{3}}\right).
+\end{align*}
+
+\subsection*{Ответ:}
+\[
+u^*(t) = \begin{cases} 
+1, & 0 \le t < 2 + \sqrt{5/3}, \\
+-2, & 2 + \sqrt{5/3} \le t \le T_{\min}.
+\end{cases}
+\]
+\[
+T_{\min} = \frac{3}{2}\left(1 + \sqrt{\frac{5}{3}}\right) \approx 3.436.
+\]
+
+\end{document}

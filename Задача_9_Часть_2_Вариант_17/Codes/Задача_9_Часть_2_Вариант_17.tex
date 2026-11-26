@@ -38,18 +38,7 @@
 & g(x):=\int_0^1 x^2\,dt-1\ge 0,\qquad x(0)=x(1)=0. &
 \end{flalign*}
 
-\section*{2. Обоснование активного ограничения}
-
-Ограничений на \(\dot x\) нет: \(\dot x\) входит только в \(J\). Ограничение наложено на \(x\) в интегральной форме.
-
-Пусть \(x\) допустима и \(A:=\int_0^1 x^2\,dt>1\). Положим \(y=x/\sqrt A\). Тогда
-\begin{flalign*}
-& \int_0^1 y^2\,dt=\frac1A\int_0^1 x^2\,dt=1,\quad y(0)=y(1)=0, & \\
-& J[y]=\frac1A\int_0^1 \dot x^2\,dt=\frac{J[x]}{A}. &
-\end{flalign*}
-Так как \(A>1\) и \(J[x]>0\) (иначе \(x\equiv0\), что недопустимо), то \(J[y]<J[x]\). \(\Rightarrow\) точка с \(\int_0^1 x^2\,dt>1\) не может быть точкой минимума. \(\Rightarrow\) минимум достигается на границе \(\int_0^1 x^2\,dt=1\).
-
-\section*{3. Необходимые условия (KKT)}
+\section*{2. Необходимые условия (KKT)}
 
 Лагранжиан для \(g(x)\ge0\):
 \begin{flalign*}
@@ -63,10 +52,18 @@
 & \delta x(0)=\delta x(1)=0\;\Rightarrow\;\ddot x+\mu x=0. &
 \end{flalign*}
 
-Если \(\int_0^1 x^2\,dt>1\), то \(\mu=0\Rightarrow \ddot x=0,\ x(0)=x(1)=0\Rightarrow x\equiv0\), что противоречит \(\int_0^1 x^2\,dt\ge1\). \(\Rightarrow\)
+\section*{3. Обоснование активности ограничения}
+
+\textbf{Предположим, что ограничение неактивно:} \(\int_0^1 x^2\,dt>1\).
+
+Тогда по условию дополняющей нежёсткости \(\mu=0\), и уравнение Эйлера даёт:
 \begin{flalign*}
-& \int_0^1 x^2\,dt=1,\qquad \mu>0. &
+& \ddot x=0,\quad x(0)=x(1)=0\;\Rightarrow\;x\equiv 0. &
 \end{flalign*}
+
+Но тогда \(\int_0^1 x^2\,dt=0<1\), что противоречит допустимости \(x\).
+
+\(\Rightarrow\) \textbf{ограничение активно:} \(\int_0^1 x^2\,dt=1,\quad \mu>0.\)
 
 \section*{4. Сведение к задаче Лагранжа}
 
@@ -84,23 +81,26 @@
 
 \section*{5. Необходимые условия}
 
-1. \textbf{Стационарность по \(x\):}
+1. \textbf{Уравнения Эйлера:}
 \begin{flalign*}
 & \frac{d}{dt}L_{\dot{x}} = L_x \;\Rightarrow\; \dot{p} = 2\lambda x. &
 \end{flalign*}
 
-2. \textbf{Стационарность по \(u\):}
+2. \textbf{Трансверсальность по \(x\):}
 \begin{flalign*}
-& L_u = 0 \;\Rightarrow\; p = 2\lambda_0 u. &
+& L_{\dot{x}}(t_k) = (-1)^k l_{x(t_k)},\quad k=0,1. &
 \end{flalign*}
+Концы фиксированы: \(x(0)=x(1)=0 \;\Rightarrow\; \delta x(0)=\delta x(1)=0 \;\Rightarrow\; \bigl[L_{\dot{x}}\delta x\bigr]_0^1=0.\)
 
-3. \textbf{Граничные условия:}
+3. \textbf{Оптимальность по \(u\):}
 \begin{flalign*}
-& x(0)=0,\qquad x(1)=0. &
+& L_u = 0 \;\Rightarrow\; 2\lambda_0 u - p = 0 \;\Rightarrow\; p = 2\lambda_0 u. &
 \end{flalign*}
+\(L_{uu} = 2\lambda_0 > 0\) при \(\lambda_0 > 0 \;\Rightarrow\; u\) доставляет минимум \(L\) по \(u\).
 
 4. \textbf{Согласование знаков:} \(\lambda_0 \ge 0\); \(\lambda\) любого знака.
 
+\newpage
 \section*{6. Исследование нормальности}
 
 \textbf{Случай \(\lambda_0=0\):}
@@ -110,6 +110,8 @@
 Так как по ограничению \(x\not\equiv 0\), то \(\lambda=0\), и все множители нулевые — невозможно.
 
 \textbf{Случай \(\lambda_0\neq 0\):}
+
+Если \(\lambda_0>0\), то можно разделить все уравнения на \(\lambda_0\) и переобозначить \(\lambda/\lambda_0\) как новую \(\lambda\). Полагаем \(\lambda_0=1\):
 \begin{flalign*}
 & \lambda_0=1 \;\Rightarrow\; p=2\dot x,\quad \dot p=2\ddot x. &
 \end{flalign*}
@@ -117,6 +119,10 @@
 \begin{flalign*}
 & \ddot x=\lambda x,\qquad x(0)=x(1)=0. &
 \end{flalign*}
+
+Усиленнное условие Лежандра: \(L_{uu}=2>0\).\\
+\vspace{0.5 cm}
+Кандидаты на экстремум — все \(x_n(t)=\pm\sqrt2\sin(\pi n t)\), \(n\in\mathbb{N}\).
 
 \section*{7. Краевая задача}
 
@@ -140,19 +146,51 @@
 & \min_n J[x_n]=J[x_1]=\pi^2. &
 \end{flalign*}
 
-\section*{9. Достаточность (Виртингер)}
+\section*{9. Достаточность}
+
+\textbf{9.1. Неравенство Виртингера}
 
 \(x\in C^1[0,1],\ x(0)=x(1)=0\):
 \begin{flalign*}
 & \int_0^1 x^2\,dt\le\frac{1}{\pi^2}\int_0^1\dot x^2\,dt,\qquad =\,\Leftrightarrow\,x(t)=C\sin(\pi t). &
 \end{flalign*}
+
+Оценка $J[x]$ через $\int_0^1 x^2\,dt$:
 \begin{flalign*}
 & J[x]\ge\pi^2\int_0^1 x^2\,dt\ge\pi^2, & \\
 & J[x]=\pi^2\;\Leftrightarrow\;\int_0^1 x^2\,dt=1\ \wedge\ x=C\sin(\pi t)\;\Rightarrow\;\frac{C^2}{2}=1\;\Rightarrow\;C=\pm\sqrt2. &
 \end{flalign*}
+
+\textbf{9.2. Разложение $J[\hat x + h]$.}
+
+Пусть \(x(t) = \hat x(t) + h(t)\) — допустимая функция (\(h(0)=h(1)=0\), \(\int_0^1 (\hat x+h)^2 dt = 1\)). Тогда:
 \begin{flalign*}
-& \hat x_\pm(t)=\pm\sqrt2\sin(\pi t)\ \Rightarrow\ \text{строгий глобальный минимум (две экстремали).} &
+& J[x] = \int_0^1 (\dot{\hat x}+\dot h)^2 dt = J[\hat x] + 2\int_0^1 \dot{\hat x}\dot h\,dt + \int_0^1 \dot h^2 dt. &
 \end{flalign*}
+Интегрируем по частям:
+\begin{flalign*}
+& \int_0^1 \dot{\hat x}\dot h\,dt = \dot{\hat x}h\big|_0^1 - \int_0^1 \ddot{\hat x}h\,dt = -\int_0^1 \ddot{\hat x}h\,dt. &
+\end{flalign*}
+Так как \(\hat x = \pm\sqrt2\sin(\pi t)\), то \(\ddot{\hat x} = -\pi^2\hat x\), и:
+\begin{flalign*}
+& 2\int_0^1 \dot{\hat x}\dot h\,dt = 2\pi^2\int_0^1 \hat x h\,dt. &
+\end{flalign*}
+Из условия \(\int_0^1 (\hat x+h)^2 dt = 1\) и \(\int_0^1 \hat x^2 dt = 1\):
+\begin{flalign*}
+& 2\int_0^1 \hat x h\,dt + \int_0^1 h^2 dt = 0 \;\Rightarrow\; \int_0^1 \hat x h\,dt = -\frac{1}{2}\int_0^1 h^2 dt. &
+\end{flalign*}
+Подставляем:
+\begin{flalign*}
+& J[x] = J[\hat x] - \pi^2\int_0^1 h^2 dt + \int_0^1 \dot h^2 dt. &
+\end{flalign*}
+По неравенству Виртингера \(\int_0^1 \dot h^2 dt \ge \pi^2\int_0^1 h^2 dt\), поэтому:
+\begin{flalign*}
+& J[x] \ge J[\hat x] = \pi^2. &
+\end{flalign*}
+Равенство достигается только при \(h\equiv 0\).
+
+\(\Rightarrow\) \(\hat x_\pm(t)=\pm\sqrt2\sin(\pi t)\) — строгий глобальный минимум.
+
 Глобального максимума нет: \(\alpha\to+\infty\Rightarrow J[\alpha x]=\alpha^2 J[x]\to+\infty\).
 
 \section*{10. Оптимальное управление}
@@ -167,7 +205,11 @@
 \end{flalign*}
 \(J[\hat x_+]=J[\hat x_-]=\pi^2\;\Rightarrow\) обе пары оптимальны.
 
-\section*{11. Седловые точки (\(n\ge2\))}
+\section*{11. Локальные экстремумы и седловые точки}
+
+При \(n=1\): \(\hat x_\pm=\pm\sqrt2\sin(\pi t)\) — глобальный минимум (раздел 9) \(\Rightarrow\) локальный.
+
+При \(n\ge2\): исследуем знак второй вариации на допустимых направлениях.
 
 Вариация \(x_\varepsilon=(1+\delta)x_n+\varepsilon\sin(\pi t)\), \(\delta=-\tfrac{\varepsilon^2}{4}+O(\varepsilon^4)\):
 \begin{flalign*}
@@ -180,8 +222,6 @@
 & J[x_\varepsilon]=\pi^2 n^2+\varepsilon^2\pi^2\!\left(M^2-\tfrac{n^2}{2}\right)+O(\varepsilon^4)>J[x_n]\ \Rightarrow\ x_n \text{ не локальный максимум.} &
 \end{flalign*}
 \(\Rightarrow x_n=\pm\sqrt2\sin(\pi n t),\ n\ge2\) — седловые точки.
-
-\(n=1\): \(\hat x_\pm=\pm\sqrt2\sin(\pi t)\) — строгий глобальный минимум.
 
 \vspace{0.6cm}
 \section*{Ответ}

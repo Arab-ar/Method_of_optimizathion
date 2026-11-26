@@ -116,18 +116,7 @@ $J(\tau) = \int_0^\tau \dot{x}^2\,dt$ стремится к $\pi^2 \approx 9.87$
 
 ---
 
-### Анимация 4. Парабола $J(A)$ с допустимой областью
-**Файл:** `anim_amplitude_parabola.gif`
-
-![Amplitude Parabola](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_amplitude_parabola.gif)
-
-Парабола $J(A) = \pi^2 A^2/2$; зелёным выделена **допустимая область** $|A| \ge \sqrt{2}$
-(из ограничения $\int x^2 = A^2/2 \ge 1$). Красная точка прохрдит(скользит) по кривой;
-в подписи — проверка допустимости и значение $J_{\min} = \pi^2$ на границе.
-
----
-
-### Анимация 5. Две симметричные оптимальные пары
+### Анимация 4. Две симметричные оптимальные пары
 **Файл:** `anim_dual_optima.gif`
 
 ![Dual Optima](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_dual_optima.gif)
@@ -142,7 +131,7 @@ $J(\tau) = \int_0^\tau \dot{x}^2\,dt$ стремится к $\pi^2 \approx 9.87$
 
 ---
 
-### Анимация 6. Семейство экстремалей $x_n(t) = \sqrt{2}\sin(n\pi t)$
+### Анимация 5. Семейство экстремалей $x_n(t) = \sqrt{2}\sin(n\pi t)$
 **Файл:** `anim_extremal_family.gif`
 
 ![Extremal Family](https://raw.githubusercontent.com/Arab-ar/Method_of_optimizathion/main/Задача_9_Часть_2_Вариант_17/images/anim_extremal_family.gif)

@@ -1,162 +1,102 @@
+restart;
+with(plots):
+with(plottools):
+Digits := 15;
 
-restart;  with(plots):  with(plottools):  Digits coloneq 15;    #
-
-   Числовые значения констант (evalf обязательно!)  tau_val 
-
-  coloneq evalf(2 + sqrt(5/3));  T_val coloneq evalf(1.5 * (1 + 
-
-  sqrt(5/3)));  x2_tau coloneq evalf(sqrt(5/3));  x1_tau coloneq 
-
-  uminus01/6;    # Функции состояния и управления  x1_t coloneq t
-
-   srarr piecewise(t leq tau_val, 1 uminus0 2*t + t^2/2, x1_tau +
-
-   x2_tau*(tuminus0tau_val) uminus0 (tuminus0tau_val)^2):  x2_t 
-
-  coloneq t srarr piecewise(t leq tau_val, uminus02 + t, x2_tau 
-
-  uminus0 2*(tuminus0tau_val)):  u_t coloneq t srarr piecewise(t 
-
-  leq tau_val, 1, uminus02):    frames coloneq 100;    #
-
-   =============================================================\
-
-  ========  # ГРАФИК 1: ФАЗОВЫЙ ПОРТРЕТ  #
-
-   =============================================================\
-
-  ========    Gamma1 coloneq plot(uminus0x2^2/4 + 1/4, x2=1..2.5,
-
-   color=black, thickness=2, linestyle=dot):  Gamma2 coloneq plot
-
-  (x2^2/2 uminus0 1/2, x2=uminus02.5..1, color=black, thickness=2
-
-  , linestyle=dot):  Gamma coloneq display(Gamma1, Gamma2):    #
-
-   Две отдельные точки (Maple не поддерживает разные символы в 
-
-   одном pointplot)  pt_start coloneq pointplot([1, uminus02], 
-
-  symbol=solidcircle, symbolsize=20, color=black):  pt_end 
-
-  coloneq pointplot([0, 1], symbol=diamond, symbolsize=20, color=
-
-  black):    seq_plots1 coloneq [seq(      display(          
-
-  Gamma, pt_start, pt_end,          plot([x1_t(t), x2_t(t), t=0..
-
-  min(evalf(i*T_val/frames), tau_val)], color=blue, thickness=3),
-
-            `if`(evalf(i*T_val/frames) > tau_val,                
-
-  plot([x1_t(t), x2_t(t), t=tau_val..evalf(i*T_val/frames)], 
-
-  color=green, thickness=3),                NULL),          
-
-  pointplot([evalf(x1_t(i*T_val/frames)), evalf(x2_t(i*T_val/
-
-  frames))], symbol=solidcircle, symbolsize=25, color=orange),   
-
-         title=cat("Фазовый портрет. t = ", evalf[2](i*T_val/
-
-  frames)),          labels=["x_1", "x_2"],          view=[
-
-  uminus01.5..1.5, uminus02.5..2.5],          scaling=constrained
-
-        ),      i=1..frames  )]:  anim1 coloneq display(
-
-  seq_plots1, insequence=true):      #
-
-   =============================================================\
-
-  ========  # ГРАФИК 2: ГРАФИКИ ОТ ВРЕМЕНИ  #
-
-   =============================================================\
-
-  ========    p_x1_static coloneq plot(x1_t(t), t=0..T_val, color
-
-  =blue, thickness=2, legend="x_1(t)"):  p_x2_static coloneq plot
-
-  (x2_t(t), t=0..T_val, color=red, thickness=2, legend="x_2(t)"):
-
-      seq_plots2 coloneq [seq(      display(          p_x1_static
-
-  , p_x2_static,          #
-
-   Вертикальная линия: plot([x,x], [y1,y2])          plot([evalf(
-
-  i*T_val/frames), evalf(i*T_val/frames)], [uminus03, 3], color=
-
-  black, linestyle=dash, thickness=2),          pointplot([evalf(
-
-  i*T_val/frames), evalf(x1_t(i*T_val/frames))], symbol=
-
-  solidcircle, symbolsize=20, color=blue),          pointplot
-
-  ([evalf(i*T_val/frames), evalf(x2_t(i*T_val/frames))], symbol=
-
-  solidcircle, symbolsize=20, color=red),          title=cat(
-
-  "Координаты и скорость. t = ", evalf[2](i*T_val/frames)),      
-
-      labels=["Время t", "Значения"],          view=[0..T_val, 
-
-  uminus03..3]      ),      i=1..frames  )]:  anim2 coloneq 
-
-  display(seq_plots2, insequence=true):      #
-
-   =============================================================\
-
-  ========  # ГРАФИК 3: УПРАВЛЕНИЕ U(T)  #
-
-   =============================================================\
-
-  ========    p_u_step coloneq plot(u_t(t), t=0..T_val, color=
-
-  black, thickness=4, discont=true, legend="u(t)"):  #
-
-   Горизонтальные линии: plot([x1,x2], [y1,y2])  p_level1 coloneq
-
-   plot([0, T_val], [1, 1], color=green, linestyle=dot, thickness
-
-  =1):  p_level2 coloneq plot([0, T_val], [uminus02, uminus02], 
-
-  color=red, linestyle=dot, thickness=1):    seq_plots3 coloneq 
-
-  [seq(      display(          p_u_step, p_level1, p_level2,     
-
-       plot([evalf(i*T_val/frames), evalf(i*T_val/frames)], 
-
-  [uminus03, 2], color=black, linestyle=dash, thickness=1),      
-
-      pointplot([evalf(i*T_val/frames), `if`(evalf(i*T_val/frames
-
-  ) leq tau_val, 1, uminus02)],                     symbol=
-
-  solidcircle, symbolsize=30,                     color=`if`(
-
-  evalf(i*T_val/frames) leq tau_val, green, red)),          title
-
-  =cat("Управление u(t). t = ", evalf[2](i*T_val/frames)),       
-
-     labels=["Время t", "u(t)"],          view=[0..T_val, uminus0
-
-  3..2]      ),      i=1..frames  )]:  anim3 coloneq display
-
-  (seq_plots3, insequence=true):      #
-
-   =============================================================\
-
-  ========  # ВЫВОД  #
-
-   =============================================================\
-
-  ========  print("Анимация 1: Фазовый портрет");  anim1;    
-
-  print("Анимация 2: Графики x1 и x2 от времени");  anim2;    
-
-  print("Анимация 3: Управление u(t)");  anim3;
-
+# ============================================================
+# Параметры задачи (числовые значения)
+# ============================================================
+tau_val := evalf(2 + sqrt(5/3));
+T_val   := evalf(1.5*(1 + sqrt(5/3)));
+x2_tau  := evalf(sqrt(5/3));
+x1_tau  := -1/6;
 
-                                
+x1_t := t -> piecewise(t <= tau_val, 1 - 2*t + t^2/2,
+                              x1_tau + x2_tau*(t - tau_val) - (t - tau_val)^2):
+x2_t := t -> piecewise(t <= tau_val, -2 + t, x2_tau - 2*(t - tau_val)):
+u_t  := t -> piecewise(t <= tau_val, 1, -2):
 
+TITLE_FONT := [TIMES, BOLD, 15]:
+LABEL_FONT := [TIMES, BOLD, 13]:
+TEXT_FONT  := [TIMES, BOLD, 12]:
+
+# ============================================================
+# Анимация 1. Фазовый портрет
+# ============================================================
+phase_portrait := proc(tau)
+    local gamma, pt_start, pt_end, blue_traj, green_traj, dot, txt;
+    gamma := display(
+        plot(-x2^2/4 + 1/4, x2=1..2.5,  color=black, thickness=2, linestyle=dot),
+        plot( x2^2/2 - 1/2, x2=-2.5..1, color=black, thickness=2, linestyle=dot));
+    pt_start := point([1, -2], color=black, symbol=solidcircle, symbolsize=20):
+    pt_end   := point([0,  1], color=black, symbol=diamond,     symbolsize=20):
+    blue_traj  := plot([x1_t(t), x2_t(t), t=0..min(tau, tau_val)], color=blue,  thickness=4):
+    green_traj := `if`(tau > tau_val,
+                       plot([x1_t(t), x2_t(t), t=tau_val..tau], color=green, thickness=4),
+                       NULL):
+    dot := point([evalf(x1_t(tau)), evalf(x2_t(tau))],
+                 color=orange, symbol=solidcircle, symbolsize=25):
+    txt := textplot([-0.2, 2.2,
+        sprintf("t = %.3f   x1 = %.3f   x2 = %.3f", tau, x1_t(tau), x2_t(tau))],
+        font=TEXT_FONT):
+    display(gamma, pt_start, pt_end, blue_traj, green_traj, dot, txt,
+        title="Фазовый портрет", titlefont=TITLE_FONT,
+        labels=["x_1", "x_2"], labelfont=LABEL_FONT,
+        view=[-1.5..1.5, -2.5..2.5], scaling=constrained, gridlines=true);
+end proc:
+
+# ============================================================
+# Анимация 2. Координата и скорость во времени
+# ============================================================
+time_plots := proc(tau)
+    local px1, px2, scan, d1, d2, txt;
+    px1  := plot(x1_t(t), t=0..T_val, color=blue,  thickness=3, legend="x_1(t)"):
+    px2  := plot(x2_t(t), t=0..T_val, color=red,   thickness=3, legend="x_2(t)"):
+    scan := plot([tau, tau], [-3, 3], color=black, linestyle=dash, thickness=2):
+    d1   := point([tau, evalf(x1_t(tau))], color=blue, symbol=solidcircle, symbolsize=18):
+    d2   := point([tau, evalf(x2_t(tau))], color=red,  symbol=solidcircle, symbolsize=18):
+    txt  := textplot([T_val/2, 2.5,
+        sprintf("t = %.3f   x_1 = %.3f   x_2 = %.3f", tau, x1_t(tau), x2_t(tau))],
+        font=TEXT_FONT):
+    display(px1, px2, scan, d1, d2, txt,
+        title="Координата и скорость во времени", titlefont=TITLE_FONT,
+        labels=["t", "x_1, x_2"], labelfont=LABEL_FONT,
+        view=[0..T_val, -3..3], gridlines=true);
+end proc:
+
+# ============================================================
+# Анимация 3. Релейное управление
+# ============================================================
+control := proc(tau)
+    local pu, lvl1, lvl2, scan, ball, txt;
+    pu   := plot(u_t(t), t=0..T_val, color=black, thickness=4, discont=true, legend="u(t)"):
+    lvl1 := plot([0, T_val], [ 1,  1], color=green, linestyle=dot, thickness=1):
+    lvl2 := plot([0, T_val], [-2, -2], color=red,   linestyle=dot, thickness=1):
+    scan := plot([tau, tau], [-3, 2], color=black, linestyle=dash, thickness=1):
+    ball := point([tau, `if`(tau <= tau_val, 1, -2)],
+                  color=`if`(tau <= tau_val, green, red),
+                  symbol=solidcircle, symbolsize=28):
+    txt  := textplot([T_val/2, 1.6,
+        sprintf("t = %.3f   u = %d   tau = %.3f", tau,
+                `if`(tau <= tau_val, 1, -2), tau_val)],
+        font=TEXT_FONT):
+    display(pu, lvl1, lvl2, scan, ball, txt,
+        title="Релейное управление u(t)", titlefont=TITLE_FONT,
+        labels=["t", "u(t)"], labelfont=LABEL_FONT,
+        view=[0..T_val, -3..2], gridlines=true);
+end proc:
+
+# ============================================================
+# ЗАПУСК АНИМАЦИЙ
+# ============================================================
+plots:-animate(phase_portrait, [tau], tau=0..T_val, frames=120, background=white);
+plots:-animate(time_plots,     [tau], tau=0..T_val, frames=120, background=white);
+plots:-animate(control,        [tau], tau=0..T_val, frames=120, background=white);
+
+# --- Сохранение в GIF (раскомментировать при необходимости) ---
+# plot[display](plots:-animate(phase_portrait,[tau],tau=0..T_val,frames=120),
+#               filename="D:/phase_portrait.gif");
+# plot[display](plots:-animate(time_plots,[tau],tau=0..T_val,frames=120),
+#               filename="D:/time_plots.gif");
+# plot[display](plots:-animate(control,[tau],tau=0..T_val,frames=120),
+#               filename="D:/control.gif");

@@ -3,76 +3,122 @@
 \usepackage[russian]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{geometry}
-\usepackage{listings}
-\usepackage{xcolor}
 
 \geometry{a4paper, left=20mm, right=20mm, top=20mm, bottom=20mm}
 
-\lstset{
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{blue},
-    commentstyle=\color{green!60!black},
-    stringstyle=\color{red},
-    frame=single,
-    breaklines=true,
-    backgroundcolor=\color{gray!5}
-}
+\newtheorem{definition}{Определение}
+\newtheorem{remark}{Замечание}
 
 \begin{document}
 
-\section*{Решение}
+\section*{Задача 3. Касательное пространство к множеству $M$ в точке $(0,0)$}
 
 \[
-M = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 \le 0,\ x_2 \le 0,\ x_1^3 + x_2^3 \le 1\}, \qquad x_0 = (0, 0).
+M = \{(x_1, x_2) \in \mathbb{R}^2 \mid x_1 \le 0,\ x_2 \le 0,\ x_1^3 + x_2^3 \le 1\}, \qquad p = (0, 0).
 \]
 
-\noindent 1. Ограничения и их активность в \(x_0\):
-\begin{align*}
-g_1(x_1, x_2) &= x_1 \le 0 &\implies g_1(0, 0) &= 0 \quad (\text{активно}), \\
-g_2(x_1, x_2) &= x_2 \le 0 &\implies g_2(0, 0) &= 0 \quad (\text{активно}), \\
-g_3(x_1, x_2) &= x_1^3 + x_2^3 - 1 \le 0 &\implies g_3(0, 0) &= -1 < 0 \quad (\text{неактивно}).
-\end{align*}
+\subsection*{Часть I. Теоретические основания}
+
+\subsubsection*{1.1. Что такое касательный вектор?}
+
+Согласно определению из лекции и Википедии:
+
+\begin{definition}[Касательный вектор к подмногообразию]
+\textbf{Касательный вектор} в точке $p$ гладкого подмногообразия $M$ евклидова пространства --- это \textbf{вектор скорости} $\alpha'(0)$ некоторой гладкой кривой $\alpha$, целиком лежащей в $M$ и проходящей через $p$:
+\[
+\alpha: (-\varepsilon, \varepsilon) \to M, \quad \alpha(0) = p.
+\]
+Две кривые $\alpha$ и $\beta$ задают один и тот же касательный вектор, если $\alpha'(0) = \beta'(0)$ (они \emph{касаются} друг друга в точке $p$).
+\end{definition}
+
+\begin{remark}
+Для множеств с границей (как наше $M$) кривая может быть определена лишь на полуинтервале $[0, \varepsilon)$, так как из граничной точки нельзя двигаться ``наружу''.\\ 
+\\
+Поэтому мы рассматриваем кривые $\alpha: [0, \varepsilon) \to M$.
+\end{remark}
+
+\subsubsection*{1.2. Касательный конус и касательное пространство}
+
+\begin{definition}[Касательный конус]
+Множество всех возможных векторов скорости $\alpha'(0)$ по всем кривым $\alpha: [0, \varepsilon) \to M$ с $\alpha(0) = p$ называется \textbf{касательным конусом} (конусом допустимых направлений):
+\[
+K_M(p) = \left\{ v \in \mathbb{R}^n \;\middle|\; \exists\, \alpha: [0,\varepsilon) \to M,\ \alpha(0) = p,\ \alpha'(0) = v \right\}.
+\]
+\end{definition}
+
+\begin{definition}[Касательное пространство]
+\textbf{Касательное пространство} к $M$ в точке $p$ --- это линейная оболочка касательного конуса:
+\[
+T_p M = \operatorname{span} K_M(p) = \left\{ \sum_{i=1}^k \lambda_i v_i \;\middle|\; k \in \mathbb{N},\ \lambda_i \in \mathbb{R},\ v_i \in K_M(p) \right\}.
+\]
+Это наименьшее линейное подпространство $\mathbb{R}^n$, содержащее все касательные направления.
+\end{definition}
+
+\begin{remark}[]
+Для открытого множества $U \subset \mathbb{R}^n$ касательное пространство $T_p U \cong \mathbb{R}^n$, так как из любой точки можно двигаться в любом направлении.\\
+\\
+Для множества с границей касательный конус $K_M(p)$ может быть строго меньше $\mathbb{R}^n$, но его линейная оболочка всё равно может дать всё $\mathbb{R}^n$ (как в нашей задаче).
+\end{remark}
+
+\subsection*{Часть II. Решение}
+
+\textbf{1. Анализ ограничений.\\}
+
+Введём $g_1 = x_1$, $g_2 = x_2$, $g_3 = x_1^3 + x_2^3 - 1$. В точке $p$:
+\[
+g_1(0,0) = 0, \quad g_2(0,0) = 0, \quad g_3(0,0) = -1 < 0.
+\]
+
+$\forall (x_1, x_2) \in M$: $x_1 \le 0, x_2 \le 0 \Rightarrow x_1^3 + x_2^3 \le 0 < 1$, поэтому $g_3$ неактивно на $M$.\\
+
+\textbf{2. Необходимое условие.\\}
+
+Пусть $\alpha: [0, \varepsilon) \to M$, $\alpha(0) = (0,0)$, $\alpha'(0) = v = (v_1, v_2)$.\\
+
+$\alpha(t) \in M \Rightarrow \alpha_1(t) \le 0,\ \alpha_2(t) \le 0\ \forall t \in [0, \varepsilon)$.
 
 \[
-\forall x \in M: \quad x_1 \le 0,\ x_2 \le 0 \implies x_1^3 + x_2^3 \le 0 < 1 \implies I(x_0) = \{1, 2\}.
+v_1 = \alpha_1'(0) = \lim_{t \to 0^+} \frac{\alpha_1(t)}{t} \le 0, \quad v_2 = \alpha_2'(0) = \lim_{t \to 0^+} \frac{\alpha_2(t)}{t} \le 0.
 \]
 
-\noindent 2. Градиенты и регулярность:
-\begin{align*}
-\nabla g_1(x_0) &= \left. \begin{pmatrix} \dfrac{\partial g_1}{\partial x_1} \\[8pt] \dfrac{\partial g_1}{\partial x_2} \end{pmatrix} \right|_{(0,0)} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \qquad
-\nabla g_2(x_0) = \left. \begin{pmatrix} \dfrac{\partial g_2}{\partial x_1} \\[8pt] \dfrac{\partial g_2}{\partial x_2} \end{pmatrix} \right|_{(0,0)} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
-\end{align*}
+\textbf{3. Достаточное условие.\\}
+
+$\forall v = (v_1, v_2)$ с $v_1 \le 0, v_2 \le 0$ рассмотрим $\alpha(t) = (tv_1, tv_2)$, $t \in [0, \varepsilon)$:
+\[
+\alpha_1(t) = tv_1 \le 0, \quad \alpha_2(t) = tv_2 \le 0, \quad \alpha_1^3 + \alpha_2^3 = t^3(v_1^3 + v_2^3) \le 0 < 1.
+\]
+
+$\alpha(0) = p$, $\alpha'(0) = v \Rightarrow v \in K_M(p)$.\\
+
+\textbf{4. Касательный конус.}
 
 \[
-\det \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = 1 \neq 0 \implies \text{условие регулярности выполнено.}
+K_M(0,0) = \{(v_1, v_2) \in \mathbb{R}^2 \mid v_1 \le 0,\ v_2 \le 0\} \quad \text{(третий квадрант)}.
 \]
 
-\noindent 3. Допустимые направления (\(\nabla g_i(x_0)^T v \le 0,\ i \in I(x_0)\)):
-\begin{align*}
-\nabla g_1(0, 0)^T v &= \begin{pmatrix} 1 & 0 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = v_1 \le 0, \\[4pt]
-\nabla g_2(0, 0)^T v &= \begin{pmatrix} 0 & 1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = v_2 \le 0.
-\end{align*}
+\textbf{5. Касательное пространство.\\}
 
-\[
-D = \left\{ v = (v_1, v_2) \in \mathbb{R}^2 \;\middle|\; v_1 \le 0,\ v_2 \le 0 \right\}.
-\]
+$u_1 = (-1, 0) \in K_M(0,0)$, $u_2 = (0, -1) \in K_M(0,0)$.\\
 
-\noindent 4. Касательное пространство (линейная оболочка допустимых направлений):
+$\{u_1, u_2\}$ --- базис $\mathbb{R}^2$, поэтому:
 \[
-T_{(0,0)}M = \text{span}(D) = \left\{ \alpha u + \beta w \mid \alpha, \beta \in \mathbb{R},\ u, w \in D \right\}.
+T_{(0,0)}M = \operatorname{span} K_M(0,0) \supseteq \operatorname{span}\{u_1, u_2\} = \mathbb{R}^2.
 \]
 
+\subsection*{Ответ}
+
 \[
-\text{Так как } (-1, 0) \in D \text{ и } (0, -1) \in D, \text{ то } \forall (x, y) \in \mathbb{R}^2:
-\]
-\[
-(x, y) = -x(-1, 0) - y(0, -1) \implies \mathbb{R}^2 \subseteq \text{span}(D).
+\boxed{T_{(0,0)}M = \mathbb{R}^2.}
 \]
 
-\noindent Ответ:
-\[
-T_{(0,0)}M = \mathbb{R}^2.
-\]
+\begin{remark}[]
+Точка $(0,0)$ --- это ``угол'' множества $M$ (пересечение двух граничных прямых $x_1 = 0$ и $x_2 = 0$).\\
+
+Касательный конус в этой точке --- третий квадрант (все направления, ``смотрящие внутрь'' множества).\\
+
+Хотя конус не совпадает со всем $\mathbb{R}^2$, он содержит два линейно независимых направления $(-1,0)$ и $(0,-1)$, поэтому его линейная оболочка заполняет всю плоскость.
+\end{remark}
 
 \end{document}

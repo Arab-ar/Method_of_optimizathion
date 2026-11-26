@@ -1,9 +1,9 @@
-# Задача 7: Задача Больца
+# Задача 7: Задача Больца с подвижными концами
 
 **Условие задачи:**
 
 $$
-\mathcal{B}(x(\cdot))=\int_0^{T_0}\\bigl(x^2+\dot x^2-4x\sin t\bigr)\,dt + l(x(0),x(T_0))\to\operatorname{extr}
+\mathcal{B}(x(\cdot))=\int_0^{T_0}\!\bigl(x^2+\dot x^2-4x\sin t\bigr)\,dt + l(x(0),x(T_0))\to\text{extr}
 $$
 
 где $l(x_0,x_1)=2x_0^2-2x_1-x_1^2$.

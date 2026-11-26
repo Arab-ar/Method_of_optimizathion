@@ -60,12 +60,6 @@ $$
 x_2(\tau) = \sqrt{5/3},\quad x_1(\tau) = -1/6,\quad \tau = 2 + \sqrt{5/3},\quad T_{\min} = \tfrac{3}{2}\left(1 + \sqrt{5/3}\right) \approx 3.436.
 $$
 
-**Ответ.**
-
-$$
-u^*(t) = \begin{cases} 1, & 0 \le t < 2+\sqrt{5/3},\\ -2, & 2+\sqrt{5/3} \le t \le T_{\min}. \end{cases}
-$$
-
 ## 3. 🎬 Анимации
 
 ### Анимация 1. Фазовый портрет
